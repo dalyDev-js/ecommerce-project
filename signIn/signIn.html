@@ -19,7 +19,7 @@
             <i class="fa-solid fa-phone"></i>
             <span>+0123456789</span>
             <i class="fa-regular fa-envelope"></i>
-            <span>AMA@domain.com</span>
+            <span>info@AMA.com</span>
         </div>
         <span class="discount">Summer sale discount off<span style="color: red;">50%</span>! Shop Now</span>
         <div class="contry">
@@ -99,10 +99,10 @@
                 <div class="sign-with-social">
                     <h3>Sign in with social media</h3>
                     <div class="social-signin">
-                        <button type="button" class="facebook-btn">
+                        <button type="button" class="facebook-btn" id="facebookLogin">
                             <i class="fa-brands fa-facebook"></i>Sign in with Facebook</button>
 
-                        <button type="button" class="google-btn"><i class="fa-brands fa-google"></i>Sign in with
+                        <button type="button" class="google-btn" id="google"><i class="fa-brands fa-google"></i>Sign in with
                             Google</button>
                     </div>
                     <span>Dont have an account yet?</span>
@@ -112,6 +112,8 @@
             </div>
         </div>
     </main>
+    <script type="module" src="../firebase/googleAuth.js"></script>
+    <script type="module" src="../firebase/facebookAuth.js"></script>
     <script src="script.js"></script>
 </body>
 

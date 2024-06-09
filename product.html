@@ -34,7 +34,7 @@
                 </div>
                 <div class="second-nav">
                     <ul>
-                        <li><a href="#">Home</a></li>
+                        <li><a href="index.html">Home</a></li>
                         <li><a href="#">Shop</a></li>
                         <li><a href="#">Products</a></li>
 
@@ -56,8 +56,8 @@
                         <li><i class="fa-regular fa-heart"></i></li>
                         <div class="cart">
                             <li><i class="fa-solid fa-cart-shopping"></i></li>
-                            <div class="cart-notification">
-                                0
+                            <div class="cart-notification" id="cartIcon">
+                                
                             </div>
                         </div>
                     </ul>
@@ -69,25 +69,13 @@
         <section>
             <div class="product-page">
                 <div class="product-details">
-                    <div class="product-side">
-                        <img src="CSS/assets/100_merino_wool_sweater_vest2.png" alt="">
+                    <div class="product-side" id="imageDetails">
+                        <img   src="CSS/assets/100_merino_wool_sweater_vest2.png" alt="">
                     </div>
-                    <div class="product-side">
-                        <h2>Slim-Fift V-neck T-shirt
-                        </h2>
-                        <p>75.00$</p>
-                        <h4>Go sporty this summer with this vintage navy and white striped v-neck t-shirt from the Nike.
-                            Perfect for pairing with denim and white kicks for a stylish sporty vibe.
-
-                        </h4>
-                        <div class="product-action">
-                            <div class="product-count">
-                                <span><button><i class="fa-solid fa-minus"></i></button></span>
-
-                                <span>1</span>
-                                <span><button><i class="fa-solid fa-plus"></i></button></span>
-
-                            </div>
+                    <div class="product-side" >
+                        <div id="product-detail">
+                     
+                        </div>
                             <div class="add-cart">
                                 Add to cart
 
@@ -95,7 +83,6 @@
                             <div class="like"> <i class="fa-regular fa-heart"></i>
                             </div>
 
-                        </div>
 
                         <h5> <strong>Availability:</strong> <span>In Stock</span> </h5>
 
@@ -214,5 +201,7 @@
 
 
         </footer>
+        <script type="module" src="./js/product.js"></script>
+    </body>
 
 </html>
