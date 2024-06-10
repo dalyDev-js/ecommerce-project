@@ -8,7 +8,7 @@ export function getCart() {
   return cart;
 }
 
-export function addToCart(product, quantity) {
+export function addToCart(product) {
   if (product) {
     cart.push(product);
     localStorage.setItem("cart", JSON.stringify(cart));
