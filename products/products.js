@@ -1,6 +1,8 @@
 import { addToCart, getCart } from "../js/cart.js";
 export function showProducts(products) {
   let cards = "";
+  const cartIcon = document.getElementById("cartIcon");
+  cartIcon.textContent = `${getCart().length}`;
   for (let i = 0; i < products.length; i++) {
     const productId = products[i].id;
     let titleStr = products[i].title.substring(0, 10);
@@ -75,10 +77,10 @@ export function showProducts(products) {
   function updateQuantityDisplay(productId) {
     const quantityElement = document.getElementById(`quantity-${productId}`);
     const cartIcon = document.getElementById("cartIcon");
+    cartIcon.textContent = `${getCart().length}`;
     console.log(getCart().length);
     if (quantityElement) {
       quantityElement.textContent = `Quantity: ${getQuantity(productId)}`;
-      cartIcon.textContent = `${getCart().length}`;
     }
   }
 }
