@@ -24,73 +24,132 @@ function setActiveSlide() {
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+export function createUsersStorage() {
+  if (!localStorage.getItem("users")) {
+    localStorage.setItem("users", JSON.stringify([]));
+  }
+}
+createUsersStorage();
+
+function addUserToStorage(user) {
+  let users = JSON.parse(localStorage.getItem("users"));
+
+  users.push(user);
+
+  localStorage.setItem("users", JSON.stringify(users));
+  localStorage.setItem("activeUser", JSON.stringify(user));
+}
+
 //signup validation
-//============================================
-document
-  .getElementById("sign-up-form")
-  .addEventListener("submit", function (event) {
-    let valid = true;
-    // console.log(eventInfo);
 
-    // Clear previous error messages
-    document.getElementById("fNameError").textContent = "";
-    document.getElementById("lNameError").textContent = "";
-    document.getElementById("emailError").textContent = "";
-    document.getElementById("passwordError").textContent = "";
-    document.getElementById("confirmPasswordError").textContent = "";
+const fName = document.getElementById("f-name");
+const lName = document.getElementById("l-name");
+const email = document.getElementById("email");
+const password = document.getElementById("password");
+const confirmPassword = document.getElementById("confirm-password");
+const nameRegex = /^[A-Za-z]{3,}$/;
+const emailRegex = /^[^\s@]{3,}@[^\s@]+\.[^\s@]+$/;
+const passwordRegex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
 
-    // First Name validation
-    const firstName = document.getElementById("f-name").value;
-    if (firstName.trim() === "") {
-      document.getElementById("fNameError").textContent =
-        "First Name is required.";
-      valid = false;
-    }
+let valid = {
+  fName: false,
+  lName: false,
+  email: false,
+  password: false,
+  confirmPassword: false,
+};
 
-    // Last Name validation
-    const lastName = document.getElementById("l-name").value;
-    if (lastName.trim() === "") {
-      document.getElementById("lNameError").textContent =
-        "Last Name is required.";
-      valid = false;
-    }
+// First Name
+fName.addEventListener("input", function () {
+  if (nameRegex.test(fName.value)) {
+    valid.fName = true;
+    changeMessage("f-name-error", valid);
+  } else {
+    valid.fName = false;
+    changeMessage("f-name-error", !valid, "Enter a valid name");
+  }
+});
 
-    // Email validation
-    const email = document.getElementById("email").value;
-    const emailError = document.getElementById("emailError");
-    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+// Last Name
+lName.addEventListener("input", function () {
+  if (nameRegex.test(lName.value)) {
+    changeMessage("l-name-error", valid);
+    valid.lName = true;
+  } else {
+    valid.lName = false;
+    changeMessage("l-name-error", !valid, "Enter a valid name");
+  }
+});
 
-    if (!emailPattern.test(email)) {
-      emailError.textContent = "Please enter a valid email address.";
-      valid = false;
-    }
+// Email
+email.addEventListener("input", function () {
+  if (emailRegex.test(email.value)) {
+    changeMessage("email-error", valid);
+    valid.email = true;
+  } else {
+    changeMessage("email-error", !valid, "Enter a valid name");
+    valid.email = false;
+  }
+});
 
-    // Password validation
-    const password = document.getElementById("password").value;
-    const passwordError = document.getElementById("passwordError");
-    const passwordPattern =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-
-    if (!passwordPattern.test(password)) {
-      passwordError.textContent =
-        "Password must be at least 8 characters long and include an uppercase letter, a lowercase letter, a number, and a special character.";
-      valid = false;
-    }
-
-    // Confirm Password validation
-    const confirmPassword = document.getElementById("confirm-password").value;
-    const confirmPasswordError = document.getElementById(
-      "confirmPasswordError"
+// Password
+password.addEventListener("input", function () {
+  console.log(password.value);
+  if (passwordRegex.test(password.value)) {
+    changeMessage("password-error", valid);
+    valid.password = true;
+  } else {
+    valid.password = false;
+    changeMessage(
+      "password-error",
+      !valid,
+      "Password should be at least 8 characters and include at least one uppercase letter and one digit."
     );
+  }
+});
+// matching passwords
+confirmPassword.addEventListener("input", function () {
+  if (confirmPassword.value == password.value) {
+    valid.confirmPassword = true;
+    changeMessage("confirm-password-error", valid);
+  } else {
+    valid.confirmPassword = false;
+    changeMessage("confirm-password-error", !valid, "Password don't match");
+  }
+});
 
-    if (password !== confirmPassword) {
-      confirmPasswordError.textContent = "Passwords do not match.";
-      valid = false;
-    }
+// submit
+document.getElementById("signupForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+  if (
+    valid.fName &&
+    valid.lName &&
+    valid.email &&
+    valid.password &&
+    valid.confirmPassword === true
+  ) {
+    let user = {
+      firstName: fName.value,
+      lastName: lName.value,
+      email: email.value,
+      password: password.value,
+      cart: [],
+    };
+    createUsersStorage();
+    addUserToStorage(user);
+    window.location.href = "../products/products.html";
+  } else {
+    console.log("no");
+  }
+});
 
-    // Prevent form submission if validation fails
-    if (!valid) {
-      event.preventDefault();
-    }
-  });
-// console.log(eventInfo);
+function changeMessage(id, valid, message) {
+  if (valid) {
+    document.getElementById(id).textContent = "✔";
+    document.getElementById(id).className = "success";
+  } else if (!valid) {
+    document.getElementById(id).textContent = message;
+    document.getElementById(id).className = "error";
+  }
+}

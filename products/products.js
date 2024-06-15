@@ -1,12 +1,36 @@
 import { addToCart, getCart } from "../js/cart.js";
+
+const userName = JSON.parse(localStorage.getItem("activeUser"));
+console.log("user :", userName);
+if (userName) {
+  const userCart = JSON.parse(localStorage.getItem("activeUser")).cart;
+}
+if (userName) {
+  document.getElementById("userName").style.marginRight = "30px";
+
+  document.getElementById(
+    "userName"
+  ).innerHTML = `Hello, ${userName.firstName}`;
+}
+
 export function showProducts(products) {
   let cards = "";
   const cartIcon = document.getElementById("cartIcon");
-  cartIcon.textContent = `${getCart().length}`;
+  if (userName) {
+    cartIcon.textContent = `${getCart().length}`;
+  }
+
   for (let i = 0; i < products.length; i++) {
     const productId = products[i].id;
     let titleStr = products[i].title.substring(0, 10);
-    console.log(typeof titleStr);
+    products.forEach((product) => {
+      const existingProduct = getCart().find((item) => item.id === product.id);
+      const h2 = document.getElementById(`added-${product.id}`);
+      if (existingProduct) {
+        console.log(h2);
+        console.log(product.id);
+      }
+    });
     const quantity = getQuantity(productId);
     cards += ` <div id="item-${productId}" class="item">
           <div class="item-img">
@@ -26,7 +50,7 @@ export function showProducts(products) {
           <div class="item-body">
             <h2>${titleStr}</h2>
 
-            <p>${products[i].price}</p>
+            <p>${products[i].price} $</p>
             <span>
 
               <strong>
@@ -49,7 +73,6 @@ export function showProducts(products) {
     document
       .getElementById(`addToCart-${product.id}`)
       .addEventListener("click", function (e) {
-        console.log("hello pressed");
         e.stopPropagation();
         addToCart(product);
 
@@ -76,7 +99,7 @@ export function showProducts(products) {
 
   function updateQuantityDisplay(productId) {
     const quantityElement = document.getElementById(`quantity-${productId}`);
-    const cartIcon = document.getElementById("cartIcon");
+
     cartIcon.textContent = `${getCart().length}`;
     console.log(getCart().length);
     if (quantityElement) {

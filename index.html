@@ -52,11 +52,18 @@
                 <div class="third-nav">
                     <ul>
                         <li><i class="fa-solid fa-magnifying-glass"></i></li>
-                        <li><i class="fa-regular fa-circle-user"></i></li>
+                        <li>
+                            <a href="signIn/signIn.html">
+
+                                <i class="fa-regular fa-circle-user"></i>
+                            </a>
+                        </li>
                         <li><i class="fa-regular fa-heart"></i></li>
                         <div class="cart">
-                            <li><i class="fa-solid fa-cart-shopping"></i></li>
-                            <div class="cart-notification">
+                            <li> <a href="../cart/cart.html">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                              </a></li>
+                            <div class="cart-notification" id="cartIcon">
                                 0
                             </div>
                         </div>
@@ -424,6 +431,8 @@
 
     </footer>
 
+     <script type="module" src="icon.js"></script>
+    <script type="module" src="./products/products.js"></script>
     <script type="module" src="main.js"></script>
 
 </body>

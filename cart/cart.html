@@ -1,291 +1,272 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Your Cart</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-        rel="stylesheet">
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet" />
     <link
-        href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-    <script src="https://kit.fontawesome.com/6d60548e6f.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="cart.css">
-</head>
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet" />
+    <script
+      src="https://kit.fontawesome.com/6d60548e6f.js"
+      crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="cart.css" />
+  </head>
 
-<body>
-
-
-
+  <body>
     <header>
-        <!-- for discount -->
-        <div class="discount">
-            <p>Summer sale Discount Off <span>50%</span>! <a href="#">Shop Now</a></p>
-
+      <!-- for discount -->
+      <div class="discount">
+        <p>
+          Summer sale Discount Off <span>50%</span>! <a href="#">Shop Now</a>
+        </p>
+      </div>
+      <!-- for navbar -->
+      <nav>
+        <div class="navbar">
+          <div class="first-nav">
+            <img
+              src="../CSS/assets/ama-high-resolution-logo-black-transparent.png"
+              alt="" />
+          </div>
+          <div class="second-nav">
+            <ul>
+              <li><a href="../index.html">Home</a></li>
+              <li><a href="#">Shop</a></li>
+              <li><a href="../products/products.html">Products</a></li>
+            </ul>
+            <img
+              src="../CSS/assets/ama-high-resolution-logo-black-transparent.png"
+              alt="" />
+            <ul>
+              <li><a href="#">Elements</a></li>
+              <li><a href="#">Watches</a></li>
+              <div class="buy">
+                <li><a href="#">buy Now</a></li>
+              </div>
+            </ul>
+          </div>
+          <div class="third-nav">
+            <ul>
+              <li><i class="fa-solid fa-magnifying-glass"></i></li>
+              <li><i class="fa-regular fa-circle-user"></i></li>
+              <li><i class="fa-regular fa-heart"></i></li>
+              <div class="cart">
+                <li>
+                  <a href="../cart/cart.html">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                  </a>
+                </li>
+                <div class="cart-notification" id="cartIcon">0</div>
+              </div>
+            </ul>
+          </div>
         </div>
-        <!-- for navbar -->
-        <nav>
-            <div class="navbar">
-                <div class="first-nav">
-                    <img src="../CSS/assets/ama-high-resolution-logo-black-transparent.png" alt="">
-                </div>
-                <div class="second-nav">
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="#">Shop</a></li>
-                        <li><a href="#">Products</a></li>
-
-                    </ul>
-                    <img src="../CSS/assets/ama-high-resolution-logo-black-transparent.png" alt="">
-                    <ul>
-                        <li><a href="#">Elements</a></li>
-                        <li><a href="#">Watches</a></li>
-                        <div class="buy">
-                            <li><a href="#">buy Now</a></li>
-                        </div>
-
-                    </ul>
-                </div>
-                <div class="third-nav">
-                    <ul>
-                        <li><i class="fa-solid fa-magnifying-glass"></i></li>
-                        <li><i class="fa-regular fa-circle-user"></i></li>
-                        <li><i class="fa-regular fa-heart"></i></li>
-                        <div class="cart">
-                            <li><i class="fa-solid fa-cart-shopping"></i></li>
-                            <div class="cart-notification" id="cartIcon">
-
-                            </div>
-                        </div>
-                    </ul>
-                </div>
-
-
-            </div>
-        </nav>
+      </nav>
     </header>
     <section>
-        <div class="cart-page">
-            <div class="cart-data">
-                <div class="cart-items">
-                    <div class="cart-item">
-                        <div class="cart-body">
-                            <div class="cart-details">
-                                <div class="cart-item-img">
-                                    <img src="../CSS/assets/bag_1.jpg" alt="">
-                                </div>
-                                <div class="cart-item-details">
-                                    <h2>Samsung 65-Inch CU8000 Crystal UHD- 4K - Smart TV - Dynamic Crystal Colors
-                                        (2023)</h2>
-                                    <p><strong>Availability:</strong> in stock</p>
-                                </div>
-                            </div>
-                            <div class="cart-price">23,02000$</div>
-                        </div>
-                        <div class="cart-add-remove">
-                            <div class="remove">
-                                <button>
-                                    <span><i class="fa-solid fa-trash-can"></i></span> <span>Delete</span>
-                                </button>
-
-
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="cart-item">
-                        <div class="cart-body">
-                            <div class="cart-details">
-                                <div class="cart-item-img">
-                                    <img src="../CSS/assets/footer-wear_2.jpg" alt="">
-                                </div>
-                                <div class="cart-item-details">
-                                    <h2>Samsung 65-Inch CU8000 Crystal UHD- 4K - Smart TV - Dynamic Crystal Colors
-                                        (2023)</h2>
-                                    <p><strong>Availability:</strong> in stock</p>
-                                </div>
-                            </div>
-                            <div class="cart-price">23,02000$</div>
-                        </div>
-                        <div class="cart-add-remove">
-                            <div class="remove">
-                                <button>
-                                    <span><i class="fa-solid fa-trash-can"></i></span> <span>Delete</span>
-                                </button>
-
-
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="cart-item">
-                        <div class="cart-body">
-                            <div class="cart-details">
-                                <div class="cart-item-img">
-                                    <img src="../CSS/assets/100_merino_wool_sweater_vest2.png" alt="">
-                                </div>
-                                <div class="cart-item-details">
-                                    <h2>Samsung 65-Inch CU8000 Crystal UHD- 4K - Smart TV - Dynamic Crystal Colors
-                                        (2023)</h2>
-                                    <p><strong>Availability:</strong> in stock</p>
-                                </div>
-                            </div>
-                            <div class="cart-price">23,02000$</div>
-                        </div>
-                        <div class="cart-add-remove">
-                            <div class="remove">
-                                <button>
-                                    <span><i class="fa-solid fa-trash-can"></i></span> <span>Delete</span>
-                                </button>
-
-
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="cart-item">
-                        <div class="cart-body">
-                            <div class="cart-details">
-                                <div class="cart-item-img">
-                                    <img src="../CSS/assets/bag_1.jpg" alt="">
-                                </div>
-                                <div class="cart-item-details">
-                                    <h2>Samsung 65-Inch CU8000 Crystal UHD- 4K - Smart TV - Dynamic Crystal Colors
-                                        (2023)</h2>
-                                    <p><strong>Availability:</strong> in stock</p>
-                                </div>
-                            </div>
-                            <div class="cart-price">23,02000$</div>
-                        </div>
-                        <div class="cart-add-remove">
-                            <div class="remove">
-                                <button>
-                                    <span><i class="fa-solid fa-trash-can"></i></span> <span>Delete</span>
-                                </button>
-
-
-                            </div>
-
-                        </div>
-                    </div>
-
-
+      <div class="cart-page">
+        <div class="cart-data">
+          <div class="cart-items" id="cart-items">
+            <div class="cart-item">
+              <div class="cart-body">
+                <div class="cart-details">
+                  <div class="cart-item-img">
+                    <img src="../CSS/assets/bag_1.jpg" alt="" />
+                  </div>
+                  <div class="cart-item-details">
+                    <h2>
+                      Samsung 65-Inch CU8000 Crystal UHD- 4K - Smart TV -
+                      Dynamic Crystal Colors (2023)
+                    </h2>
+                    <p><strong>Availability:</strong> in stock</p>
+                  </div>
                 </div>
-                <div class="cart-checkout">
-                    <div class="summary">
-                        Cart Summary
-                        <hr>
-                    </div>
-                    <div class="total">
-                        <p>Subtotal</p>
-                        <h2>23,0000$</h2>
-                    </div>
-                    <div class="items-count">
-                        <p><strong>Items:</strong> x3</p>
-                    </div>
-                    <div class="proceed">
-                        <button>Proceed to Checkout</button>
-                    </div>
+                <div class="cart-price">23,02000$</div>
+              </div>
+              <div class="cart-add-remove">
+                <div class="remove">
+                  <button>
+                    <span><i class="fa-solid fa-trash-can"></i></span>
+                    <span>Delete</span>
+                  </button>
                 </div>
+              </div>
             </div>
+            <div class="cart-item">
+              <div class="cart-body">
+                <div class="cart-details">
+                  <div class="cart-item-img">
+                    <img src="../CSS/assets/footer-wear_2.jpg" alt="" />
+                  </div>
+                  <div class="cart-item-details">
+                    <h2>
+                      Samsung 65-Inch CU8000 Crystal UHD- 4K - Smart TV -
+                      Dynamic Crystal Colors (2023)
+                    </h2>
+                    <p><strong>Availability:</strong> in stock</p>
+                  </div>
+                </div>
+                <div class="cart-price">23,02000$</div>
+              </div>
+              <div class="cart-add-remove">
+                <div class="remove">
+                  <button>
+                    <span><i class="fa-solid fa-trash-can"></i></span>
+                    <span>Delete</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="cart-item">
+              <div class="cart-body">
+                <div class="cart-details">
+                  <div class="cart-item-img">
+                    <img
+                      src="../CSS/assets/100_merino_wool_sweater_vest2.png"
+                      alt="" />
+                  </div>
+                  <div class="cart-item-details">
+                    <h2>
+                      Samsung 65-Inch CU8000 Crystal UHD- 4K - Smart TV -
+                      Dynamic Crystal Colors (2023)
+                    </h2>
+                    <p><strong>Availability:</strong> in stock</p>
+                  </div>
+                </div>
+                <div class="cart-price">23,02000$</div>
+              </div>
+              <div class="cart-add-remove">
+                <div class="remove">
+                  <button>
+                    <span><i class="fa-solid fa-trash-can"></i></span>
+                    <span>Delete</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="cart-item">
+              <div class="cart-body">
+                <div class="cart-details">
+                  <div class="cart-item-img">
+                    <img src="../CSS/assets/bag_1.jpg" alt="" />
+                  </div>
+                  <div class="cart-item-details">
+                    <h2>
+                      Samsung 65-Inch CU8000 Crystal UHD- 4K - Smart TV -
+                      Dynamic Crystal Colors (2023)
+                    </h2>
+                    <p><strong>Availability:</strong> in stock</p>
+                  </div>
+                </div>
+                <div class="cart-price">23,0202200$</div>
+              </div>
+              <div class="cart-add-remove">
+                <div class="remove">
+                  <button>
+                    <span><i class="fa-solid fa-trash-can"></i></span>
+                    <span>Delete</span>
+                  </button>
+                </div>
+              </div>
+            </div> -->
+          </div>
+          <div class="cart-checkout">
+            <div class="summary">
+              Cart Summary
+              <hr />
+            </div>
+            <div class="total">
+              <p>Subtotal</p>
+              <h2 id="cart-price">23,0000$</h2>
+            </div>
+            <div class="items-count">
+              <p id="quantity"><strong>Items:</strong> x3</p>
+            </div>
+            <div class="proceed">
+              <button>Proceed to Checkout</button>
+              <button id="logOut">log out</button>
+            </div>
+          </div>
         </div>
-
-
+      </div>
     </section>
 
     <section>
-
-        <div class="shipping">
-            <div class="shipping-details">
-                <div class="shipping-service">
-                    <div class="shipping-icon">
-                        <i class="fa-solid fa-car"></i>
-                    </div>
-                    <div class="shipping-body">
-                        <h2>Free Shipping</h2>
-                        <p>
-                            Free shipping on all US order or order above $200</p>
-                    </div>
-                </div>
-                <div class="shipping-service">
-                    <div class="shipping-icon">
-                        <i class="fa-solid fa-headset"></i>
-                    </div>
-                    <div class="shipping-body">
-                        <h2>SUPPORT 24/7
-                        </h2>
-                        <p>
-                            Contact us 24 hours a day, 7 days a week
-
-                    </div>
-                </div>
-                <div class="shipping-service">
-                    <div class="shipping-icon">
-                        <i class="fa-solid fa-rotate-left"></i>
-
-                    </div>
-                    <div class="shipping-body">
-                        <h2>30 DAYS RETURN
-                        </h2>
-                        <p>
-                            Simply return it within 30 days for an exchange.
-
-                        </p>
-                    </div>
-                </div>
-                <div class="shipping-service">
-                    <div class="shipping-icon">
-                        <i class="fa-solid fa-lock"></i>
-                    </div>
-                    <div class="shipping-body">
-                        <h2>100% PAYMENT SECURE
-                        </h2>
-                        <p>
-                            We ensure secure payment with PEV
-
-                    </div>
-                </div>
-
+      <div class="shipping">
+        <div class="shipping-details">
+          <div class="shipping-service">
+            <div class="shipping-icon">
+              <i class="fa-solid fa-car"></i>
             </div>
-
+            <div class="shipping-body">
+              <h2>Free Shipping</h2>
+              <p>Free shipping on all US order or order above $200</p>
+            </div>
+          </div>
+          <div class="shipping-service">
+            <div class="shipping-icon">
+              <i class="fa-solid fa-headset"></i>
+            </div>
+            <div class="shipping-body">
+              <h2>SUPPORT 24/7</h2>
+              <p>Contact us 24 hours a day, 7 days a week</p>
+            </div>
+          </div>
+          <div class="shipping-service">
+            <div class="shipping-icon">
+              <i class="fa-solid fa-rotate-left"></i>
+            </div>
+            <div class="shipping-body">
+              <h2>30 DAYS RETURN</h2>
+              <p>Simply return it within 30 days for an exchange.</p>
+            </div>
+          </div>
+          <div class="shipping-service">
+            <div class="shipping-icon">
+              <i class="fa-solid fa-lock"></i>
+            </div>
+            <div class="shipping-body">
+              <h2>100% PAYMENT SECURE</h2>
+              <p>We ensure secure payment with PEV</p>
+            </div>
+          </div>
         </div>
+      </div>
+      <div id="cards"></div>
     </section>
 
     <footer>
-        <div class="footer">
-            <div class="footer-classes">
-                <div class="footer-class">
-                    <img src="../CSS/assets/ama-high-resolution-logo-black-transparent.png" alt="">
-                </div>
-                <div class="footer-class">
-                    © 2024 Copyright By AMA
-
-                </div>
-                <div class="footer-class">
-                    <ul>
-                        <li><i class="fa-brands fa-facebook"></i></li>
-                        <li><i class="fa-brands fa-square-instagram"></i></li>
-                        <li><i class="fa-brands fa-x-twitter"></i></li>
-
-                    </ul>
-                </div>
-            </div>
-
+      <div class="footer">
+        <div class="footer-classes">
+          <div class="footer-class">
+            <img
+              src="../CSS/assets/ama-high-resolution-logo-black-transparent.png"
+              alt="" />
+          </div>
+          <div class="footer-class">© 2024 Copyright By AMA</div>
+          <div class="footer-class">
+            <ul>
+              <li><i class="fa-brands fa-facebook"></i></li>
+              <li><i class="fa-brands fa-square-instagram"></i></li>
+              <li><i class="fa-brands fa-x-twitter"></i></li>
+            </ul>
+          </div>
         </div>
-
-
-
+      </div>
     </footer>
-
-</body>
+    <script type="module" src="cartList.js"></script>
+  </body>
+</html>

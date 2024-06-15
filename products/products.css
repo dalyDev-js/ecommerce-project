@@ -28,6 +28,10 @@ body {
 .discount a:hover {
   color: rgb(163, 107, 2);
 }
+li {
+  font-size: 20px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
 .navbar {
   display: flex;
   height: 80px;
