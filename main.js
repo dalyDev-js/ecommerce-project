@@ -9,3 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error("Error:", error);
     });
 });
+
+if (!localStorage.getItem("activeUser")) {
+  localStorage.setItem("activeUser", JSON.stringify({}));
+}
