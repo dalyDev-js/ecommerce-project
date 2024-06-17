@@ -73,7 +73,7 @@ document
       if (user.email == email && user.password == password) {
         console.log("done");
         localStorage.setItem("activeUser", JSON.stringify(user));
-        window.location.href = "../products/products.html";
+        window.location.href = "../products";
       } else {
         console.log("wrong password");
       }

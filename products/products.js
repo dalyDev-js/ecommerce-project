@@ -1,9 +1,8 @@
 import { addToCart, getCart } from "../js/cart.js";
 
 const userName = JSON.parse(localStorage.getItem("activeUser"));
-console.log("user :", userName);
 
-if (userName) {
+if (Object.keys(userName).length !== 0) {
   document.getElementById("userName").style.marginRight = "30px";
 
   document.getElementById(
@@ -14,14 +13,14 @@ if (userName) {
 export function showProducts(products) {
   let cards = "";
   const cartIcon = document.getElementById("cartIcon");
-  if (userName) {
+  if (Object.keys(userName).length !== 0) {
     cartIcon.textContent = `${getCart().length}`;
   }
 
   for (let i = 0; i < products.length; i++) {
     const productId = products[i].id;
     let titleStr = products[i].title.substring(0, 10);
-    const quantity = getQuantity(productId);
+
     cards += ` <div id="item-${productId}" class="item">
           <div class="item-img">
             <img src="${products[i].image}" alt="${products[i].title}">
@@ -51,34 +50,34 @@ export function showProducts(products) {
           
           </div>
         </div>`;
-    //  <span id="quantity-${productId}">
-    // <strong>Quantity:</strong> ${quantity}</span>
   }
-
-  //================
 
   document.getElementById("cards").innerHTML = cards;
 
-  products.forEach((product) => {
-    document
-      .getElementById(`addToCart-${product.id}`)
-      .addEventListener("click", function (e) {
-        e.stopPropagation();
-        addToCart(product);
+  if (Object.keys(userName).length !== 0) {
+    products.forEach((product) => {
+      document
+        .getElementById(`addToCart-${product.id}`)
+        .addEventListener("click", function (e) {
+          e.stopPropagation();
+          addToCart(product);
 
-        updateQuantityDisplay(product.id);
-        console.log(getCart());
-        this.style.display = "none";
-        document.getElementById(`added-${product.id}`).innerHTML =
-          "Added to Cart";
-      });
-    document
-      .getElementById(`item-${product.id}`)
-      .addEventListener("click", function () {
-        localStorage.setItem("selectedProduct", JSON.stringify(product));
-        window.location.href = `../productDetails/productDetails.html?id=${product.id}`;
-      });
-  });
+          updateQuantityDisplay(product.id);
+          console.log(getCart());
+          this.style.display = "none";
+          document.getElementById(`added-${product.id}`).innerHTML =
+            "Added to Cart";
+        });
+      document
+        .getElementById(`item-${product.id}`)
+        .addEventListener("click", function () {
+          localStorage.setItem("selectedProduct", JSON.stringify(product));
+          window.location.href = `../productDetails/?id=${product.id}`;
+        });
+    });
+  } else {
+    console.log("please log in first");
+  }
 
   function getQuantity(productId) {
     const cart = getCart();
@@ -88,12 +87,14 @@ export function showProducts(products) {
   }
 
   function updateQuantityDisplay(productId) {
-    const quantityElement = document.getElementById(`quantity-${productId}`);
+    if (Object.keys(userName).length !== 0) {
+      const quantityElement = document.getElementById(`quantity-${productId}`);
 
-    cartIcon.textContent = `${getCart().length}`;
-    console.log(getCart().length);
-    if (quantityElement) {
-      quantityElement.textContent = `Quantity: ${getQuantity(productId)}`;
+      cartIcon.textContent = `${getCart().length}`;
+      console.log(getCart().length);
+      if (quantityElement) {
+        quantityElement.textContent = `Quantity: ${getQuantity(productId)}`;
+      }
     }
   }
 }

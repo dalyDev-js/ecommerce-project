@@ -11,17 +11,23 @@ export function getCart() {
 }
 
 export function addToCart(product) {
-  if (product) {
-    cart.push(product);
-    activeUser.cart = cart;
-    localStorage.setItem("activeUser", JSON.stringify(activeUser));
+  if (Object.keys(activeUser).length !== 0) {
+    if (product) {
+      cart.push(product);
+      activeUser.cart = cart;
+      localStorage.setItem("activeUser", JSON.stringify(activeUser));
 
-    let users = JSON.parse(localStorage.getItem("users"));
-    let userIndex = users.findIndex((user) => user.email === activeUser.email);
-    if (userIndex > -1) {
-      users[userIndex].cart = cart;
+      let users = JSON.parse(localStorage.getItem("users"));
+      let userIndex = users.findIndex(
+        (user) => user.email === activeUser.email
+      );
+      if (userIndex > -1) {
+        users[userIndex].cart = cart;
+      }
+      localStorage.setItem("users", JSON.stringify(users));
     }
-    localStorage.setItem("users", JSON.stringify(users));
+  } else {
+    return;
   }
 }
 

@@ -25,6 +25,13 @@ function setActiveSlide() {
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
+export function createUsersStorage() {
+  if (!localStorage.getItem("users")) {
+    localStorage.setItem("users", JSON.stringify([]));
+  }
+}
+createUsersStorage();
+
 function addUserToStorage(user) {
   let users = JSON.parse(localStorage.getItem("users"));
 
@@ -131,7 +138,7 @@ document.getElementById("signupForm").addEventListener("submit", function (e) {
     };
     createUsersStorage();
     addUserToStorage(user);
-    window.location.href = "../products/products.html";
+    window.location.href = "../products";
   } else {
     console.log("no");
   }
