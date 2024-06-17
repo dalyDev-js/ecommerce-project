@@ -1,7 +1,3 @@
-if (!localStorage.getItem("cart")) {
-  localStorage.setItem("cart", JSON.stringify([]));
-}
-
 let activeUser = JSON.parse(localStorage.getItem("activeUser"));
 
 let cart = activeUser

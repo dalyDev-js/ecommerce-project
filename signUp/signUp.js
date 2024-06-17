@@ -25,13 +25,6 @@ function setActiveSlide() {
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
-export function createUsersStorage() {
-  if (!localStorage.getItem("users")) {
-    localStorage.setItem("users", JSON.stringify([]));
-  }
-}
-createUsersStorage();
-
 function addUserToStorage(user) {
   let users = JSON.parse(localStorage.getItem("users"));
 

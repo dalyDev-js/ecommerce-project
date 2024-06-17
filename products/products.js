@@ -2,9 +2,7 @@ import { addToCart, getCart } from "../js/cart.js";
 
 const userName = JSON.parse(localStorage.getItem("activeUser"));
 console.log("user :", userName);
-if (userName) {
-  const userCart = JSON.parse(localStorage.getItem("activeUser")).cart;
-}
+
 if (userName) {
   document.getElementById("userName").style.marginRight = "30px";
 
@@ -23,14 +21,6 @@ export function showProducts(products) {
   for (let i = 0; i < products.length; i++) {
     const productId = products[i].id;
     let titleStr = products[i].title.substring(0, 10);
-    products.forEach((product) => {
-      const existingProduct = getCart().find((item) => item.id === product.id);
-      const h2 = document.getElementById(`added-${product.id}`);
-      if (existingProduct) {
-        console.log(h2);
-        console.log(product.id);
-      }
-    });
     const quantity = getQuantity(productId);
     cards += ` <div id="item-${productId}" class="item">
           <div class="item-img">
