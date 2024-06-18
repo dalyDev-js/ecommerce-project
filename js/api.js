@@ -8,3 +8,8 @@ export async function fetchData() {
     throw new Error("Failed to fetch data");
   }
 }
+
+export async function getData() {
+  let data = await fetchData();
+  return data;
+}

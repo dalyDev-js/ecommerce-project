@@ -1,19 +1,38 @@
+import { getData } from "../js/api.js";
 import { addToCart, getCart } from "../js/cart.js";
+import {
+  sortHighToLow,
+  sortHighToLowRate,
+  sortLowToHigh,
+  sortLowToHighRate,
+} from "../js/sorting.js";
 
-const userName = JSON.parse(localStorage.getItem("activeUser"));
+let data;
 
-if (Object.keys(userName).length !== 0) {
-  document.getElementById("userName").style.marginRight = "30px";
+async function initialize() {
+  try {
+    data = await getData();
 
-  document.getElementById(
-    "userName"
-  ).innerHTML = `Hello, ${userName.firstName}`;
+    const userName = JSON.parse(localStorage.getItem("activeUser"));
+
+    if (Object.keys(userName).length !== 0) {
+      document.getElementById("userName").style.marginRight = "30px";
+      document.getElementById(
+        "userName"
+      ).innerHTML = `Hello, ${userName.firstName}`;
+    }
+
+    showProducts(data);
+  } catch (error) {
+    console.error("Failed to fetch data:", error.message);
+  }
 }
-console.log(userName);
 
 export function showProducts(products) {
   let cards = "";
   const cartIcon = document.getElementById("cartIcon");
+  const userName = JSON.parse(localStorage.getItem("activeUser"));
+
   if (Object.keys(userName).length !== 0) {
     cartIcon.textContent = `${getCart().length}`;
   }
@@ -62,13 +81,13 @@ export function showProducts(products) {
         .addEventListener("click", function (e) {
           e.stopPropagation();
           addToCart(product);
-
           updateQuantityDisplay(product.id);
           console.log(getCart());
           this.style.display = "none";
           document.getElementById(`added-${product.id}`).innerHTML =
             "Added to Cart";
         });
+
       document
         .getElementById(`item-${product.id}`)
         .addEventListener("click", function () {
@@ -77,27 +96,69 @@ export function showProducts(products) {
         });
     });
   } else {
-    console.log("please log in first");
+    console.log("Please log in first");
   }
 
   function getQuantity(productId) {
     const cart = getCart();
     const productAmount = cart.filter((item) => item.id === productId);
-
     return productAmount.length;
   }
 
   function updateQuantityDisplay(productId) {
     if (Object.keys(userName).length !== 0) {
       const quantityElement = document.getElementById(`quantity-${productId}`);
-
       cartIcon.textContent = `${getCart().length}`;
-
       if (quantityElement) {
         quantityElement.textContent = `Quantity: ${getQuantity(productId)}`;
       }
     }
   }
+
+  // Sort by price
+  document.getElementById("lowToHigh").addEventListener("click", function (e) {
+    e.preventDefault();
+    const sortedData = sortLowToHigh(products);
+    showProducts(sortedData);
+  });
+
+  document.getElementById("highToLow").addEventListener("click", function (e) {
+    e.preventDefault();
+    const sortedData = sortHighToLow(products);
+    showProducts(sortedData);
+  });
+
+  // Sort by rating
+  document
+    .getElementById("lowToHighRate")
+    .addEventListener("click", function (e) {
+      e.preventDefault();
+      const sortedData = sortLowToHighRate(products);
+      showProducts(sortedData);
+    });
+
+  document
+    .getElementById("highToLowRate")
+    .addEventListener("click", function (e) {
+      e.preventDefault();
+      const sortedData = sortHighToLowRate(products);
+      showProducts(sortedData);
+    });
+
+  // Sort by category
+  document.getElementById("men").addEventListener("click", function () {
+    const menProducts = data.filter(
+      (product) => product.category === "men's clothing"
+    );
+    showProducts(menProducts);
+  });
+
+  document.getElementById("women").addEventListener("click", function () {
+    const womenProducts = data.filter(
+      (product) => product.category === "women's clothing"
+    );
+    showProducts(womenProducts);
+  });
 }
-// hello
-// 2nd
+
+initialize();
