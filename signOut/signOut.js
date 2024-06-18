@@ -1,4 +1,4 @@
 export function signOut() {
-  localStorage.setItem("activeUser", JSON.stringify());
+  localStorage.setItem("activeUser", JSON.stringify({}));
   window.location.href = "/";
 }

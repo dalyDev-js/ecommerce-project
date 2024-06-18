@@ -42,5 +42,5 @@ function showShoes(products) {
               </div>
             </div>`;
   }
-  document.getElementById("cards").innerHTML = cards;
+  document.getElementById("card-items").innerHTML = cards;
 }

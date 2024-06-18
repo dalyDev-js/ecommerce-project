@@ -296,6 +296,23 @@ body {
     }
   }
 }
+
+
+
+#cart-items h1{
+  font-size: 30px;
+  font-weight: 400;
+  font-family: "Poppins", sans-serif;
+}
+
+
+#cart-items h1 a{
+  text-decoration: none;
+  color: #bd8166;
+  font-size: 30px;
+  font-weight: 400;
+  font-family: "Poppins", sans-serif;
+}
 .shipping {
   background-color: white;
   height: 200px;

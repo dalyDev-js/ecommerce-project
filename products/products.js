@@ -20,7 +20,7 @@ export function showProducts(products) {
 
   for (let i = 0; i < products.length; i++) {
     const productId = products[i].id;
-    let titleStr = products[i].title.substring(0, 10);
+    let titleStr = products[i].title.substring(0, 20);
 
     cards += ` <div id="item-${productId}" class="item">
           <div class="item-img">
@@ -31,7 +31,7 @@ export function showProducts(products) {
               </div>
               <div class="addCart">
                 <button id="addToCart-${productId}" class="addToCart" data-id="${productId}">Add to Cart</button>
-                <h2 id="added-${productId}"></h2>
+                <h2 class="added" id="added-${productId}"></h2>
               </div>
 
             </div>
@@ -44,7 +44,7 @@ export function showProducts(products) {
             <span>
 
               <strong>
-                Rating:
+               <i class="fa-solid fa-star-half-stroke"></i> Rating:
               </strong>
               ${products[i].rating.rate}
             </span>
@@ -53,7 +53,7 @@ export function showProducts(products) {
         </div>`;
   }
 
-  document.getElementById("cards").innerHTML = cards;
+  document.getElementById("card-items").innerHTML = cards;
 
   if (Object.keys(userName).length !== 0) {
     products.forEach((product) => {
