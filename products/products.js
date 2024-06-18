@@ -92,7 +92,7 @@ export function showProducts(products) {
       const quantityElement = document.getElementById(`quantity-${productId}`);
 
       cartIcon.textContent = `${getCart().length}`;
-      console.log(getCart().length);
+
       if (quantityElement) {
         quantityElement.textContent = `Quantity: ${getQuantity(productId)}`;
       }

@@ -1,11 +1,11 @@
 import { addToCart, getCart, removeFromCart } from "../js/cart.js";
 import { signOut } from "../signOut/signOut.js";
 
-// const user = localStorage.getItem("activeUser", JSON.stringify());
-// if (!user) {
-//   console.log("no user");
-// }
-// console.log(user);
+const user = localStorage.getItem("activeUser", JSON.stringify());
+if (!user) {
+  console.log("no user");
+}
+
 const cartItems = getCart();
 
 cartIcon.textContent = cartItems.length;
@@ -88,4 +88,7 @@ getCartList();
 
 document.getElementById("logOut").addEventListener("click", function () {
   signOut();
+});
+document.getElementById("toCheckOut").addEventListener("click", function () {
+  window.location.href = "../orders";
 });

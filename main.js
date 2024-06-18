@@ -24,3 +24,6 @@ if (!localStorage.getItem("cart")) {
 if (!localStorage.getItem("users")) {
   localStorage.setItem("users", JSON.stringify([]));
 }
+// if (Object.keys(JSON.parse(localStorage.getItem("activeUser"))).length == 0) {
+//   document.getElementById("dropdown").style.display = "none";
+// }

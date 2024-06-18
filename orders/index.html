@@ -18,7 +18,7 @@
         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet" />
     <link
-        href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
         rel="stylesheet" />
     <script src="https://kit.fontawesome.com/6d60548e6f.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="orders.css" />
@@ -74,56 +74,40 @@
 
     <section>
         <div class="cart-page">
-
             <div class="cart-data">
-
                 <div class="cart-items" id="cart-items">
                     <h1>My Orders</h1>
-                    <div class="cart-item">
+
+                    <!-- <div class="cart-item" id="cart-item">
                         <div class="cart-body">
                             <div class="cart-details">
                                 <div class="cart-item-img">
-                                    <img src="../CSS/assets/bag_1.jpg" alt="" />
+                                    <img src="${cartItems[i].image}" alt="" />
                                 </div>
                                 <div class="cart-item-details">
                                     <h2>
-                                        Samsung 65-Inch CU8000 Crystal UHD- 4K - Smart TV -
-                                        Dynamic Crystal Colors (2023)
+                                        ${cartItems[i].title}
                                     </h2>
                                     <strong>Date:</strong> 22-11-2023
                                 </div>
                             </div>
-                            <div class="cart-price">23,02000$</div>
+                            <div class="cart-price">${cartItems[i].price}$</div>
                         </div>
                         <div class="cart-add-remove">
                             <button class="pending"> <i class="fa-solid fa-hourglass-end"></i> Pending</button>
                             <button class="approved"> <i class="fa-regular fa-circle-check"></i> Approved</button>
                             <button class="ready"><i class="fa-solid fa-truck-ramp-box"></i> Ready</button>
                             <button class="delivered"><i class="fa-solid fa-truck"></i> Delivered</button>
+                        </div>
+                    </div> -->
 
-                        </div>
-                    </div>
-                    <div class="cart-item">
-                        <div class="cart-body">
-                            <div class="cart-details">
-                                <div class="cart-item-img">
-                                    <img src="../CSS/assets/bag_1.jpg" alt="" />
-                                </div>
-                                <div class="cart-item-details">
-                                    <h2>
-                                        Samsung 65-Inch CU8000 Crystal UHD- 4K - Smart TV -
-                                        Dynamic Crystal Colors (2023)
-                                    </h2>
-                                    <strong>Date:</strong> 22-11-2023
-                                </div>
-                            </div>
-                            <div class="cart-price">23,02000$</div>
-                        </div>
-                        <div class="cart-add-remove">
-                            <button class="pending"> <i class="fa-solid fa-hourglass-end"></i> Pending</button>
-                            <button class="approved"> <i class="fa-regular fa-circle-check"></i> Approved</button>
-                            <button class="ready"><i class="fa-solid fa-truck-ramp-box"></i> Ready</button>
-                            <button class="delivered"><i class="fa-solid fa-truck"></i> Delivered</button>
 
-                        </div>
-                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="orders.js" type="module"></script>
+</body>
+
+</html>

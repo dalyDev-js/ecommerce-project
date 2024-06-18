@@ -4,6 +4,11 @@ if (!activeUser || Object.keys(activeUser) == 0) {
   localStorage.setItem("activeUser", JSON.stringify({}));
 }
 
+function getDate() {
+  let placedDate = new Date().toLocaleDateString();
+  return placedDate;
+}
+
 let cart =
   activeUser && activeUser.cart
     ? activeUser.cart
@@ -18,6 +23,8 @@ export function getCart() {
 export function addToCart(product) {
   if (Object.keys(activeUser).length !== 0) {
     if (product) {
+      console.log("placed at: ", getDate());
+      product.placedAt = getDate();
       cart.push(product);
       activeUser.cart = cart;
       localStorage.setItem("activeUser", JSON.stringify(activeUser));
