@@ -9,6 +9,7 @@ if (Object.keys(userName).length !== 0) {
     "userName"
   ).innerHTML = `Hello, ${userName.firstName}`;
 }
+console.log(userName);
 
 export function showProducts(products) {
   let cards = "";

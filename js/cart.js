@@ -1,10 +1,15 @@
 let activeUser = JSON.parse(localStorage.getItem("activeUser"));
 
-let cart = activeUser
-  ? activeUser.cart
-  : JSON.parse(localStorage.getItem("cart"));
+if (!activeUser || Object.keys(activeUser) == 0) {
+  localStorage.setItem("activeUser", JSON.stringify({}));
+}
 
-console.log(cart);
+let cart =
+  activeUser && activeUser.cart
+    ? activeUser.cart
+    : JSON.parse(localStorage.getItem("cart")) || [];
+
+console.log(activeUser);
 
 export function getCart() {
   return cart;
