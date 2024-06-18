@@ -203,6 +203,7 @@ body {
           }
   
           .cart-body {
+            width: 90%;
             padding-bottom: 0;
             height: 50%;
             margin-top: 20px;
