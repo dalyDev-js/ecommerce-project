@@ -35,6 +35,42 @@ display: flex;
     height: 60px;
     background-color: beige;
 }
+.dropbtn-nav {
+    color: rgb(0, 0, 0);
+    font-size: 18px;
+    border: none;
+    background-color:#FFFFFF;
+  }
+  
+  .dropdown-nav {
+    position: relative;
+    display: inline-block;
+    button{
+        padding: 0;
+      
+    }
+  
+  }
+  
+  .dropdown-content-nav {
+    display: none;
+    position: absolute;
+    min-width: 130px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content-nav a {
+    color: black;
+    padding: 14px 11px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropbtn-nav:hover {color: #bd8166;}
+
+  .dropdown-nav:hover .dropdown-content-nav {display: block;}
+#userName a:hover .dropdown-content-nav{display: block;}
 .first-nav{
     width: 23%;
     height: 100%;
@@ -68,6 +104,10 @@ float: left;
 }
 .second-nav li{
     padding-left: 25px;
+    color: #ffbb69;
+}
+.second-nav li:hover a{
+    color: #bd8166;
 }
 .second-nav li a{
 

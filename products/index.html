@@ -22,14 +22,17 @@
 <body>
   <header>
     <!-- for discount -->
-    
+    <div class="discount">
+      <p>Summer sale Discount Off <span>50%</span>! <a href="#">Shop Now</a></p>
+
+    </div>
     <!-- for navbar -->
     <nav>
-    
+
       <div class="navbar">
-       
+
         <div class="first-nav">
-          <img src="../CSS/assets/logo-no-background.png" alt="">
+          <img src="../CSS/assets/ama-high-resolution-logo-black-transparent.png" alt="">
         </div>
         <div class="second-nav">
           <ul>
@@ -38,7 +41,7 @@
             <li><a href="products.html">Products</a></li>
 
           </ul>
-          <img src="../CSS/assets/logo-no-background.png" alt="">
+          <img src="../CSS/assets/ama-high-resolution-logo-black-transparent.png" alt="">
           <ul>
             <li><a href="#">Elements</a></li>
             <li><a href="#">Watches</a></li>
@@ -55,10 +58,10 @@
             <li><i class="fa-regular fa-heart"></i></li>
             <div class="cart">
               <li>
-              <a href="../cart/cart.html">
+                <a href="../cart/cart.html">
 
-                <i class="fa-solid fa-cart-shopping"></i>
-              </a>
+                  <i class="fa-solid fa-cart-shopping"></i>
+                </a>
               </li>
               <div id="cartIcon" class="cart-notification">
                 0
@@ -74,7 +77,45 @@
   <section>
     <div class="products-page">
       <div id="cards">
-        <!-- <div id="card-${productId}" class="item">
+        <div class="filter-bar">
+
+          <h2>Sort By:</h2>
+          <div class="filters">
+
+            <div class="dropdown">
+              <button class="dropbtn"><i class="fa-solid fa-layer-group"></i> Category ></button>
+              <div class="dropdown-content">
+                <a href="#">Mens</a>
+                <a href="#">Women</a>
+                <a href="#">Jewelry</a>
+              </div>
+            </div>
+
+            <div class="dropdown">
+              <button class="dropbtn"><i class="fa-solid fa-coins"></i> Price ></button>
+              <div class="dropdown-content">
+                <a href="#">Low - High</a>
+                <a href="#">High - Low</a>
+
+              </div>
+            </div>
+
+            <div class="dropdown">
+              <button class="dropbtn"><i class="fa-regular fa-star-half-stroke"></i> Rating ></button>
+              <div class="dropdown-content">
+                <a href="#">Low - High</a>
+                <a href="#">High - Low</a>
+
+              </div>
+            </div>
+
+
+          </div>
+
+        </div>
+        <div id="card-items">
+
+          <!-- <div id="card-${productId}" class="item">
           <div class="item-img">
             <img src="${products[i].image}" alt="${products[i].title}">
             <div class="splash">
@@ -101,11 +142,11 @@
             <span id="quantity-${productId}">
               <strong>Quantity:</strong> ${quantity}</span>
           </div> -->
-      </div>
+        </div>
 
 
 
-      <!-- 
+        <!-- 
         <div id="card-${productId}" class="card">
           <img src="../CSS/assets/bag_1.jpg" alt="${products[i].title}">
           <h2>bag helwa awy </h2>
@@ -120,6 +161,89 @@
     </div> -->
 
   </section>
+  <section>
+
+    <div class="shipping">
+      <div class="shipping-details">
+        <div class="shipping-service">
+          <div class="shipping-icon">
+            <i class="fa-solid fa-car"></i>
+          </div>
+          <div class="shipping-body">
+            <h2>Free Shipping</h2>
+            <p>
+              Free shipping on all US order or order above $200</p>
+          </div>
+        </div>
+        <div class="shipping-service">
+          <div class="shipping-icon">
+            <i class="fa-solid fa-headset"></i>
+          </div>
+          <div class="shipping-body">
+            <h2>SUPPORT 24/7
+            </h2>
+            <p>
+              Contact us 24 hours a day, 7 days a week
+
+          </div>
+        </div>
+        <div class="shipping-service">
+          <div class="shipping-icon">
+            <i class="fa-solid fa-rotate-left"></i>
+
+          </div>
+          <div class="shipping-body">
+            <h2>30 DAYS RETURN
+            </h2>
+            <p>
+              Simply return it within 30 days for an exchange.
+
+            </p>
+          </div>
+        </div>
+        <div class="shipping-service">
+          <div class="shipping-icon">
+            <i class="fa-solid fa-lock"></i>
+          </div>
+          <div class="shipping-body">
+            <h2>100% PAYMENT SECURE
+            </h2>
+            <p>
+              We ensure secure payment with PEV
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer">
+      <div class="footer-classes">
+        <div class="footer-class">
+          <img src="CSS/assets/ama-high-resolution-logo-black-transparent.png" alt="">
+        </div>
+        <div class="footer-class">
+          © 2024 Copyright By AMA
+
+        </div>
+        <div class="footer-class">
+          <ul>
+            <li><i class="fa-brands fa-facebook"></i></li>
+            <li><i class="fa-brands fa-square-instagram"></i></li>
+            <li><i class="fa-brands fa-x-twitter"></i></li>
+
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+
+
+  </footer>
   <script type="module" src="../main.js"></script>
   <script type="module" src="products.js"></script>
 

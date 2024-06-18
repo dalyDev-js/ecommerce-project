@@ -1,11 +1,11 @@
 import { addToCart, getCart, removeFromCart } from "../js/cart.js";
 import { signOut } from "../signOut/signOut.js";
 
-const user = localStorage.getItem("activeUser", JSON.stringify());
-if (!user) {
-  console.log("no user");
-}
-console.log(user);
+// const user = localStorage.getItem("activeUser", JSON.stringify());
+// if (!user) {
+//   console.log("no user");
+// }
+// console.log(user);
 const cartItems = getCart();
 
 cartIcon.textContent = cartItems.length;
@@ -14,8 +14,8 @@ export function getCartList() {
   const itemCounts = {};
   let totalPrice = 0;
   if (cartItems.length === 0) {
-    cards = `<div><h1 "> please add items to cart<h1>
-    <a href="../products/products.html"> go to products </a>
+    cards = `<div><h1 "> No items added<h1>
+    <a href="../products/index.html"> Shop Now </a>
     </div>`;
   } else {
     for (let i = 0; i < cartItems.length; i++) {
