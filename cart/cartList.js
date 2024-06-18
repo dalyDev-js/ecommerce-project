@@ -92,3 +92,5 @@ document.getElementById("logOut").addEventListener("click", function () {
 document.getElementById("toCheckOut").addEventListener("click", function () {
   window.location.href = "../orders";
 });
+
+console.log("hello");

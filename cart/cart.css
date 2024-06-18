@@ -145,7 +145,6 @@ body {
 
     .cart-checkout {
       box-shadow: 3px 3px 1px 1px rgba(92, 92, 92, 0.237);
-
       margin: 20px;
       width: 27%;
       top: 0;
@@ -195,6 +194,7 @@ body {
 
       .proceed {
         width: 100%;
+        height: 50px;
         padding-top: 20px;
         justify-content: center;
         align-items: center;
