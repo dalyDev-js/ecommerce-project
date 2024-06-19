@@ -27,7 +27,6 @@ function setActiveSlide() {
 
 const users = JSON.parse(localStorage.getItem("users", JSON.stringify()));
 
-//=================================================================
 //email and password validation
 //====================================
 document
@@ -35,34 +34,6 @@ document
   .addEventListener("submit", function (event) {
     let valid = true;
 
-    // // Clear previous error messages
-    // document.getElementById("emailError").textContent = "";
-    // document.getElementById("passwordError").textContent = "";
-
-    // // Email validation
-    // const email = document.getElementById("email").value;
-    // const emailError = document.getElementById("emailError");
-    // const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-    // if (!emailPattern.test(email)) {
-    //   emailError.textContent = "Please enter a valid email address.";
-    //   valid = false;
-    // }
-
-    // // Password validation
-    // const password = document.getElementById("password").value;
-    // const passwordError = document.getElementById("passwordError");
-    // const passwordPattern =
-    //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-
-    // if (!passwordPattern.test(password)) {
-    //   passwordError.textContent =
-    //     "Password must be at least 8 characters long and include an uppercase letter, a lowercase letter, a number, and a special character.";
-    //   valid = false;
-    // }
-
-    // Prevent form submission if validation fails
-    // if (!valid) {
     event.preventDefault();
     const email = document.getElementById("email").value;
 
@@ -83,5 +54,4 @@ document
       console.log("email doesn't exist");
       document.getElementById("emailError").innerHTML = "email doesn't exist";
     }
-    // }
   });
