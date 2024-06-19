@@ -1,87 +1,51 @@
-console.log("shoes");
-
-async function fetchShoesData() {
-  const response = await fetch("https://dalydev-js.github.io/shoes/shoes.json");
-  const data = await response.json();
-  showShoes(data);
-  console.log(data);
-}
-fetchShoesData();
-const userName = JSON.parse(localStorage.getItem("activeUser"));
-console.log(userName.firstName);
-if (Object.keys(userName).length !== 0) {
-  document.getElementById("userName").style.marginRight = "30px";
-  document.getElementById(
-    "userName"
-  ).innerHTML = `<a> Hello, ${userName.firstName}
-          <div class="dropdown-content-nav" id="dropdown">
-                                          <a href="../orders/">My Orders</a>
-  
-                                          <a href="#">Log Out</a>
-                                      </div>
-  
-        </a>`;
-}
-
-function showShoes(products) {
-  let cards = "";
-  for (let i = 0; i < products.length; i++) {
-    products = products.filter((product) => product.type == "Shoes");
-    const productId = products[i].id;
-
-    cards += ` <div id="item-${productId}" class="item">
+function productTODisplay(product) {
+  return ` <div id="item-${product.id}" class="item">
               <div class="item-img">
-                <img src="${products[i].carousel_images[0]}" alt="${products[i].name}">
+                <img src="${product.carousel_images[0]}" alt="${product.name}">
                 <div class="splash">
-                  
-                  <div class="addCart">
-                    <button id="addToCart-${productId}" class="addToCart" data-id="${productId}">Add to Cart</button>
-                    <h2 id="added-${productId}"></h2>
-                  </div>
-    
+
+                <div class="addCart">
+                <button id="addToCart-${product.id}" class="addToCart" data-id="${product.id}">Add to Cart</button>
+                <h2 id="added-${product.id}"></h2>
                 </div>
-    
-              </div>
-              <div class="item-body">
-                <h2>${products[i].name}</h2>
-    
-                <p>${products[i].current_price} $</p>
+
+                </div>
+
+                </div>
+                <div class="item-body">
+                <h2>${product.name}</h2>
+
+                <p>${product.current_price} $</p>
                 <span>
-    
-                  <strong>
-                    Rating:
-                  </strong>
-                  ${products[i].gender}
+
+                <strong>
+                Rating:
+                </strong>
+                ${product.gender}
                 </span>
-              
-              </div>
-            </div>`;
-  }
-  document.getElementById("card-items").innerHTML = cards;
+
+                </div>
+                </div>`;
 }
-// let data;
-// async function initialize() {
-//   try {
-//     data = await getData();
 
-//     const userName = JSON.parse(localStorage.getItem("activeUser"));
-//     console.log(userName);
-//     if (Object.keys(userName).length !== 0) {
-//       document.getElementById("userName").style.marginRight = "30px";
-//       document.getElementById(
-//         "userName"
-//       ).innerHTML = `<a> Hello, ${userName.firstName}
-//         <div class="dropdown-content-nav" id="dropdown">
-//                                         <a href="../orders/">My Orders</a>
+function displayProducts(product) {
+  let ProductRows = product.map(productTODisplay).join("");
+  document.getElementById("card-items").innerHTML = ProductRows;
+}
 
-//                                         <a href="#">Log Out</a>
-//                                     </div>
+///////////////////////////////////////////////////////////////////////////////////////////
+function fetchData() {
+  fetch("https://dalydev-js.github.io/shoes")
+    .then((res) => res.json())
+    .then((data) => {
+      if (!localStorage.getItem("products")) {
+        localStorage.setItem("products", JSON.stringify(data));
+      }
+      let products = JSON.parse(localStorage.getItem("products") || []);
+      displayProducts(products);
+    })
+    .catch((error) => console.error("Error fetching user data:", error));
+}
+fetchData();
 
-//       </a>`;
-//     }
-
-//     showProducts(data);
-//   } catch (error) {
-//     console.error("Failed to fetch data:", error.message);
-//   }
-// }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

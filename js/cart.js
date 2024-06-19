@@ -25,6 +25,7 @@ export function addToCart(product) {
     if (product) {
       console.log("placed at: ", getDate());
       product.placedAt = getDate();
+      product.status = "pending";
       cart.push(product);
       activeUser.cart = cart;
       localStorage.setItem("activeUser", JSON.stringify(activeUser));
