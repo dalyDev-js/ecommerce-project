@@ -7,6 +7,21 @@ async function fetchShoesData() {
   console.log(data);
 }
 fetchShoesData();
+const userName = JSON.parse(localStorage.getItem("activeUser"));
+console.log(userName.firstName);
+if (Object.keys(userName).length !== 0) {
+  document.getElementById("userName").style.marginRight = "30px";
+  document.getElementById(
+    "userName"
+  ).innerHTML = `<a> Hello, ${userName.firstName}
+          <div class="dropdown-content-nav" id="dropdown">
+                                          <a href="../orders/">My Orders</a>
+  
+                                          <a href="#">Log Out</a>
+                                      </div>
+  
+        </a>`;
+}
 
 function showShoes(products) {
   let cards = "";
@@ -44,3 +59,29 @@ function showShoes(products) {
   }
   document.getElementById("card-items").innerHTML = cards;
 }
+// let data;
+// async function initialize() {
+//   try {
+//     data = await getData();
+
+//     const userName = JSON.parse(localStorage.getItem("activeUser"));
+//     console.log(userName);
+//     if (Object.keys(userName).length !== 0) {
+//       document.getElementById("userName").style.marginRight = "30px";
+//       document.getElementById(
+//         "userName"
+//       ).innerHTML = `<a> Hello, ${userName.firstName}
+//         <div class="dropdown-content-nav" id="dropdown">
+//                                         <a href="../orders/">My Orders</a>
+
+//                                         <a href="#">Log Out</a>
+//                                     </div>
+
+//       </a>`;
+//     }
+
+//     showProducts(data);
+//   } catch (error) {
+//     console.error("Failed to fetch data:", error.message);
+//   }
+// }

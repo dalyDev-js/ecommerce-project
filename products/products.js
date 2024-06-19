@@ -19,7 +19,14 @@ async function initialize() {
       document.getElementById("userName").style.marginRight = "30px";
       document.getElementById(
         "userName"
-      ).innerHTML = `Hello, ${userName.firstName}`;
+      ).innerHTML = `<a> Hello, ${userName.firstName}
+        <div class="dropdown-content-nav" id="dropdown">
+                                        <a href="../orders/">My Orders</a>
+
+                                        <a href="#">Log Out</a>
+                                    </div>
+      
+      </a>`;
     }
 
     showProducts(data);

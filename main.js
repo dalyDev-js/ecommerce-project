@@ -27,3 +27,29 @@ if (!localStorage.getItem("users")) {
 // if (Object.keys(JSON.parse(localStorage.getItem("activeUser"))).length == 0) {
 //   document.getElementById("dropdown").style.display = "none";
 // }
+
+async function initialize() {
+  try {
+    data = await getData();
+
+    const userName = JSON.parse(localStorage.getItem("activeUser"));
+
+    if (Object.keys(userName).length !== 0) {
+      document.getElementById("userName").style.marginRight = "30px";
+      document.getElementById(
+        "userName"
+      ).innerHTML = `<a> Hello, ${userName.firstName}
+        <div class="dropdown-content-nav" id="dropdown">
+                                        <a href="orders/">My Orders</a>
+
+                                        <a href="#">Log Out</a>
+                                    </div>
+      
+      </a>`;
+    }
+
+    showProducts(data);
+  } catch (error) {
+    console.error("Failed to fetch data:", error.message);
+  }
+}
