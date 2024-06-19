@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Aboreto&family=Open+Sans:wght@400;500;700;800&family=Work+Sans:wght@200;300;400;500;600;700;800&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="./orders/style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <title>Orders</title>
+    </head>
+    <body>
+        <nav>
+            <img class="logo" src="assets/logo1.png" alt="logo">
+            <ul>
+                <li>
+                    <img src="assets/inventory.svg" alt="">
+                    <a href="admin.html">Inventory</a></li>
+                </li>
+                <li>
+                    <img src="assets/customer.svg" alt="">
+                    <a href="/users.html">Customers</a>
+                </li>
+                <li>
+                    <img src="assets/credit.svg" alt="">
+                    <a href="">Purchases</a>
+                </li>
+                
+                <li>
+                    <img src="assets/dashboard.svg" alt="">
+                    <a href="">Dashboard</a>
+                </li>
+
+            </ul>
+            <div class="user">
+                <div class="circle-cover">
+                    <img src="assets/profile.jpg" alt="Profile-image">
+                </div>
+                <span>Ahmed Hassan</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+        </nav>
+
+        <main>
+            <div class="orders">
+                <!-- header -->
+                <div class="head">
+                    <h2>Orders</h2>
+                    <div class="right-part">
+                        <div class="sort-by">
+                            <button class="sort-btn">Sort by <i class="fa-solid fa-sliders"></i></button>
+                        </div>
+                        <ul class="sort-list hidden">
+                            <li><a href="" class="sort-by-default">default</a></li>
+                            <li><a href="" class="sort-by-name">Name</a></li>
+                            <li><a href="" class="sort-by-date">Date</a></li>
+                            <li><a href="" class="sort-by-role">Role</a></li>
+                        </ul>
+                        <div class="search-input">
+                            <input type="text" id="search" placeholder="Search Order...">
+                            <img src="assets/search.svg" alt="">
+                        </div>
+                        <!-- <button class="search-btn">Search</button>  -->
+                    </div>
+                </div>
+        
+                <div class="body">
+                    <table class="orders-data-table">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Customer Name</th>
+                                <th>Email</th>
+                                <th>Address</th>
+                                <th>Date</th>
+                                <th>Total Cost</th>
+                                <th>Method</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody class="product-info-container">
+                            <!-- user Data -->
+                        </tbody>
+                    </table>
+        
+                    <div class="pagination-container">
+                        <span class="entries">showing 1 to 10 of entries</span>
+                        <div class="pagination">
+                            <!-- <button><i class="fa-solid fa-angle-left"></i>Prev</button>
+                            <button>1</button>
+                            <button>2</button>
+                            <button>3</button>
+                            <button>Next</button> -->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- <table class="user-data-panel">
+                    <tr class="user-data-header">
+                        <th>Id</th>
+                        <th>FULLNAME</th>
+                        <th>ُEmail</th>
+                        <th>Date</th>
+                        <th>Role</th>
+                        <th>Action</th>
+                    </ul>
+                </div>  -->
+                
+                <!-- <div class="user-data-container">
+                    <!-- js code  -->
+                        <!-- <ul class="user-data-holder">
+                            <li>Id</li>
+                            <li>FULLNAME</li>
+                            <li>ُEmail</li>
+                            <li>Date</li>
+                            <li>Role</li>
+                            <li>
+                                <img src="assets/edit.svg" alt="">
+                                <img src="assets/delete.svg" alt="">
+                            </li>
+                        </ul>
+                </div> --> 
+            </div>
+        </main>
+
+        <script src="/orders/script.js"></script>
+    </body>
+</html>
