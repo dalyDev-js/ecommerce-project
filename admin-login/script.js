@@ -8,8 +8,12 @@ async function fetchAdminUsers() {
 }
 fetchAdminUsers();
 
-let adminUsers = JSON.parse(localStorage.getItem("adminUsers"));
+if (!localStorage.getItem("activeUser")) {
+  localStorage.setItem("activeUser", JSON.stringify({}));
+}
 
+let adminUsers = JSON.parse(localStorage.getItem("adminUsers"));
+console.log(adminUsers);
 function adminLogin() {
   document
     .getElementById("loginForm")
@@ -19,14 +23,15 @@ function adminLogin() {
       const emailInput = document.getElementById("email").value;
       const passwordInput = document.getElementById("password").value;
 
-      const user = adminUsers.find((item) => item.email === emailInput);
+      const user = adminUsers.find((user) => user.email === emailInput);
 
       if (user) {
         if (user.password === passwordInput) {
           if (user.role === "admin") {
+            localStorage.setItem("activeUser", JSON.stringify(user));
             window.location.href = "../admin/admin.html";
           } else if (user.role === "user") {
-            window.location.href = "user.html";
+            window.location.href = "../";
           }
         } else {
           alert("Incorrect password");
