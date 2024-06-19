@@ -25,6 +25,7 @@ export function addToCart(product) {
     if (product) {
       console.log("placed at: ", getDate());
       product.placedAt = getDate();
+      product.status = "pending";
       product = {
         name: product.title || product.name,
         price: product.price || product.current_price,
