@@ -94,3 +94,19 @@ document.getElementById("toCheckOut").addEventListener("click", function () {
 });
 
 console.log("hello");
+
+const userName = JSON.parse(localStorage.getItem("activeUser"));
+console.log(userName.firstName);
+if (Object.keys(userName).length !== 0) {
+  document.getElementById("userName").style.marginRight = "30px";
+  document.getElementById(
+    "userName"
+  ).innerHTML = `<a> Hello, ${userName.firstName}
+          <div class="dropdown-content-nav" id="dropdown">
+                                          <a href="../orders/">My Orders</a>
+  
+                                          <a href="#">Log Out</a>
+                                      </div>
+  
+        </a>`;
+}

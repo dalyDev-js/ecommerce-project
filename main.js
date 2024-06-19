@@ -1,5 +1,7 @@
 import { fetchData } from "./js/api.js";
 import { showProducts } from "./products/products.js";
+import { signOut } from "signOut.js";
+
 document.addEventListener("DOMContentLoaded", function () {
   function isShowProductsPage() {
     return document.getElementById("cards") !== null;
@@ -42,7 +44,7 @@ async function initialize() {
         <div class="dropdown-content-nav" id="dropdown">
                                         <a href="orders/">My Orders</a>
 
-                                        <a href="#">Log Out</a>
+                                          <a id="logOut" href="#">Log Out</a>
                                     </div>
       
       </a>`;
@@ -52,4 +54,8 @@ async function initialize() {
   } catch (error) {
     console.error("Failed to fetch data:", error.message);
   }
+
+  document.getElementById("logOut").addEventListener("click", function () {
+    signOut();
+  });
 }

@@ -1,3 +1,5 @@
+import { signOut } from "../signOut/signOut.js";
+
 import { addToCart, getCart, removeFromCart } from "../js/cart.js";
 getCart();
 let params = new URLSearchParams(window.location.search);
@@ -56,3 +58,22 @@ function updateQuantityDisplay(productId) {
     cartIcon.textContent = cartLength;
   }
 }
+
+const userName = JSON.parse(localStorage.getItem("activeUser"));
+console.log(userName.firstName);
+if (Object.keys(userName).length !== 0) {
+  document.getElementById("userName").style.marginRight = "30px";
+  document.getElementById(
+    "userName"
+  ).innerHTML = `<a> Hello, ${userName.firstName}
+          <div class="dropdown-content-nav" id="dropdown">
+                                          <a href="../orders/">My Orders</a>
+  
+                                          <a id="logOut" href="#">Log Out</a>
+                                      </div>
+  
+        </a>`;
+}
+document.getElementById("logOut").addEventListener("click", function () {
+  signOut();
+});

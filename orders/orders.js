@@ -1,3 +1,5 @@
+import { signOut } from "../signOut/signOut.js";
+
 const user = JSON.parse(localStorage.getItem("activeUser"));
 console.log(user.cart);
 let cartItems = user.cart;
@@ -53,3 +55,22 @@ for (let i = 0; i < cartItems.length; i++) {
   //                     </div>`;
 }
 document.getElementById("cart-items").innerHTML = cards;
+
+const userName = JSON.parse(localStorage.getItem("activeUser"));
+console.log(userName.firstName);
+if (Object.keys(userName).length !== 0) {
+  document.getElementById("userName").style.marginRight = "30px";
+  document.getElementById(
+    "userName"
+  ).innerHTML = `<a> Hello, ${userName.firstName}
+          <div class="dropdown-content-nav" id="dropdown">
+                                          <a href="../orders/">My Orders</a>
+  
+                                          <a id="logOut" href="#">Log Out</a>
+                                      </div>
+  
+        </a>`;
+}
+document.getElementById("logOut").addEventListener("click", function () {
+  signOut();
+});

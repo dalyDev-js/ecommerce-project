@@ -1,3 +1,5 @@
+import { signOut } from "../signOut/signOut.js";
+
 import { getData } from "../js/api.js";
 import { addToCart, getCart } from "../js/cart.js";
 import {
@@ -23,7 +25,7 @@ async function initialize() {
         <div class="dropdown-content-nav" id="dropdown">
                                         <a href="../orders/">My Orders</a>
 
-                                        <a href="#">Log Out</a>
+                                          <a id="logOut" href="#">Log Out</a>
                                     </div>
       
       </a>`;
@@ -33,6 +35,10 @@ async function initialize() {
   } catch (error) {
     console.error("Failed to fetch data:", error.message);
   }
+
+  document.getElementById("logOut").addEventListener("click", function () {
+    signOut();
+  });
 }
 
 export function showProducts(products) {
