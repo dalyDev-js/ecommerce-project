@@ -76,9 +76,12 @@ document
         window.location.href = "../products";
       } else {
         console.log("wrong password");
+        document.getElementById("password-error").innerHTML =
+          "Incorrect password";
       }
     } else {
       console.log("email doesn't exist");
+      document.getElementById("emailError").innerHTML = "email doesn't exist";
     }
     // }
   });

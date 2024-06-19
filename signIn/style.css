@@ -186,6 +186,10 @@ main {
 
 .box {
   position: relative;
+  margin-bottom: 50px;
+}
+#password-error {
+  color: red;
 }
 
 .box input {
@@ -193,7 +197,7 @@ main {
   padding: 10px 0;
   font-size: 16px;
   color: #222;
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
   border: none;
   border-bottom: 1px solid #222;
   outline: none;
@@ -316,7 +320,9 @@ main {
   font-size: 12px;
   display: block;
 }
-
+#emailError {
+  color: red;
+}
 .signup-btn {
   margin-top: 26px;
   background-color: transparent;
