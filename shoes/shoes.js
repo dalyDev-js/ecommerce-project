@@ -1,31 +1,40 @@
+import { addToCart } from "../js/cart.js";
 function productTODisplay(product) {
   return ` <div id="item-${product.id}" class="item">
-              <div class="item-img">
-                <img src="${product.carousel_images[0]}" alt="${product.name}">
-                <div class="splash">
+                <div class="item-img">
+                  <img src="${product.carousel_images[0]}" alt="${product.name}">
+                  <div class="splash">
 
-                <div class="addCart">
-                <button id="addToCart-${product.id}" class="addToCart" data-id="${product.id}">Add to Cart</button>
-                <h2 id="added-${product.id}"></h2>
-                </div>
+                  <div class="addCart">
+                  <button id="addToCart-${product.id}" class="addToCart" data-id="${product.id}" onclick="addToCartBtn(${product.id})">Add to Cart</button>
+                  <h2 id="added-${product.id}"></h2>
+                  </div>
 
-                </div>
+                  </div>
 
-                </div>
-                <div class="item-body">
-                <h2>${product.name}</h2>
+                  </div>
+                  <div class="item-body">
+                  <h2>${product.name}</h2>
 
-                <p>${product.current_price} $</p>
-                <span>
+                  <p>${product.current_price} $</p>
+                  <span>
 
-                <strong>
-                Rating:
-                </strong>
-                ${product.gender}
-                </span>
+                  <strong>
+                  Rating:
+                  </strong>
+                  ${product.gender}
+                  </span>
 
-                </div>
-                </div>`;
+                  </div>
+                  </div>`;
+}
+window.addToCartBtn = addToCartBtn;
+
+function addToCartBtn(productID) {
+  let products = JSON.parse(localStorage.getItem("products"));
+  let product = products.find((p) => p.id === productID);
+  addToCart(product);
+  console.log(product);
 }
 
 function displayProducts(product) {
@@ -35,7 +44,7 @@ function displayProducts(product) {
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 function fetchData() {
-  fetch("https://dalydev-js.github.io/shoes")
+  fetch("https://dalydev-js.github.io/shoes/shoes.json")
     .then((res) => res.json())
     .then((data) => {
       if (!localStorage.getItem("products")) {

@@ -26,6 +26,11 @@ export function addToCart(product) {
       console.log("placed at: ", getDate());
       product.placedAt = getDate();
       product.status = "pending";
+      product = {
+        name: product.title || product.name,
+        price: product.price || product.current_price,
+        status: "pending",
+      };
       cart.push(product);
       activeUser.cart = cart;
       localStorage.setItem("activeUser", JSON.stringify(activeUser));
