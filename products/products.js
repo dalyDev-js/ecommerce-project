@@ -1,4 +1,3 @@
-import { signOut } from "../signOut/signOut.js";
 import { getData } from "../js/api.js";
 import { addToCart, getCart } from "../js/cart.js";
 import {
@@ -9,6 +8,7 @@ import {
 } from "../js/sorting.js";
 import { setupStorage } from "../js/setupStorage.js";
 import { addToWishList, getWishList } from "../js/wishList.js";
+import { signOut } from "../signOut/signOut.js";
 
 let data;
 setupStorage();
