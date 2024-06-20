@@ -17,45 +17,36 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-if (!localStorage.getItem("activeUser")) {
-  localStorage.setItem("activeUser", JSON.stringify({}));
-}
-if (!localStorage.getItem("cart")) {
-  localStorage.setItem("cart", JSON.stringify([]));
-}
-if (!localStorage.getItem("users")) {
-  localStorage.setItem("users", JSON.stringify([]));
-}
 // if (Object.keys(JSON.parse(localStorage.getItem("activeUser"))).length == 0) {
 //   document.getElementById("dropdown").style.display = "none";
 // }
 
-async function initialize() {
-  try {
-    data = await getData();
+// async function initialize() {
+//   try {
+//     data = await getData();
 
-    const userName = JSON.parse(localStorage.getItem("activeUser"));
+//     const userName = JSON.parse(localStorage.getItem("activeUser"));
+//     console.log(userName);
+//     if (Object.keys(userName).length !== 0) {
+//       document.getElementById("userName").style.marginRight = "30px";
+//       document.getElementById(
+//         "userName"
+//       ).innerHTML = `<a> Helloaaaaa, ${userName.firstName}
+//         <div class="dropdown-content-nav" id="dropdown">
+//                                         <a href="orders/">My Orders</a>
 
-    if (Object.keys(userName).length !== 0) {
-      document.getElementById("userName").style.marginRight = "30px";
-      document.getElementById(
-        "userName"
-      ).innerHTML = `<a> Hello, ${userName.firstName}
-        <div class="dropdown-content-nav" id="dropdown">
-                                        <a href="orders/">My Orders</a>
+//                                           <a id="logOut" href="#">Log Out</a>
+//                                     </div>
 
-                                          <a id="logOut" href="#">Log Out</a>
-                                    </div>
-      
-      </a>`;
-    }
+//       </a>`;
+//     }
 
-    showProducts(data);
-  } catch (error) {
-    console.error("Failed to fetch data:", error.message);
-  }
+//     showProducts(data);
+//   } catch (error) {
+//     console.error("Failed to fetch data:", error.message);
+//   }
 
-  document.getElementById("logOut").addEventListener("click", function () {
-    signOut();
-  });
-}
+//   document.getElementById("logOut").addEventListener("click", function () {
+//     signOut();
+//   });
+// }

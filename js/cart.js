@@ -27,9 +27,12 @@ export function addToCart(product) {
       product.placedAt = getDate();
       product.status = "pending";
       product = {
+        id: product.id,
         name: product.title || product.name,
         price: product.price || product.current_price,
+        image: product.image,
         status: "pending",
+        description: product.description,
       };
       cart.push(product);
       activeUser.cart = cart;

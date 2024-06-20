@@ -135,6 +135,7 @@ document.getElementById("signupForm").addEventListener("submit", function (e) {
       email: email.value,
       password: password.value,
       cart: [],
+      wishList: [],
     };
     createUsersStorage();
     addUserToStorage(user);

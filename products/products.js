@@ -1,5 +1,4 @@
 import { signOut } from "../signOut/signOut.js";
-
 import { getData } from "../js/api.js";
 import { addToCart, getCart } from "../js/cart.js";
 import {
@@ -8,8 +7,11 @@ import {
   sortLowToHigh,
   sortLowToHighRate,
 } from "../js/sorting.js";
+import { setupStorage } from "../js/setupStorage.js";
+import { addToWishList, getWishList } from "../js/wishList.js";
 
 let data;
+setupStorage();
 
 async function initialize() {
   try {
@@ -19,15 +21,13 @@ async function initialize() {
 
     if (Object.keys(userName).length !== 0) {
       document.getElementById("userName").style.marginRight = "30px";
-      document.getElementById(
-        "userName"
-      ).innerHTML = `<a> Hello, ${userName.firstName}
+      document.getElementById("userName").innerHTML = `<a> Hello, ${
+        userName.firstName || userName.name
+      }
         <div class="dropdown-content-nav" id="dropdown">
-                                        <a href="../orders/">My Orders</a>
-
-                                          <a id="logOut" href="#">Log Out</a>
-                                    </div>
-      
+          <a href="../orders/">My Orders</a>
+          <a id="logOut" href="#">Log Out</a>
+        </div>
       </a>`;
     }
 
@@ -44,6 +44,8 @@ async function initialize() {
 export function showProducts(products) {
   let cards = "";
   const cartIcon = document.getElementById("cartIcon");
+  const wishList = getWishList(); // Retrieve wishlist from localStorage
+
   const userName = JSON.parse(localStorage.getItem("activeUser"));
 
   if (Object.keys(userName).length !== 0) {
@@ -54,33 +56,32 @@ export function showProducts(products) {
     const productId = products[i].id;
     let titleStr = products[i].title.substring(0, 20);
 
+    const isLiked = wishList.some((item) => item.id === productId)
+      ? "liked"
+      : "";
+
     cards += ` <div id="item-${productId}" class="item">
           <div class="item-img">
             <img src="${products[i].image}" alt="${products[i].title}">
             <div class="splash">
-              <div class="like">
-                <i class="fa-regular fa-heart"></i>
+              <div class="like ${isLiked}" id="like-${productId}">
+                <i class="fa-regular fa-heart" id="addToWishList-${productId}"></i>
               </div>
               <div class="addCart">
                 <button id="addToCart-${productId}" class="addToCart" data-id="${productId}">Add to Cart</button>
                 <h2 class="added" id="added-${productId}"></h2>
               </div>
-
             </div>
-
           </div>
           <div class="item-body">
             <h2>${titleStr}</h2>
-
             <p>${products[i].price} $</p>
             <span>
-
               <strong>
                <i class="fa-solid fa-star-half-stroke"></i> Rating:
               </strong>
               ${products[i].rating.rate}
             </span>
-          
           </div>
         </div>`;
   }
@@ -104,6 +105,14 @@ export function showProducts(products) {
       document
         .getElementById(`item-${product.id}`)
         .addEventListener("click", function () {
+          product = {
+            id: product.id,
+            name: product.title || product.name,
+            price: product.price || product.current_price,
+            image: product.image,
+            status: "pending",
+            description: product.description,
+          };
           localStorage.setItem("selectedProduct", JSON.stringify(product));
           window.location.href = `../productDetails/?id=${product.id}`;
         });
@@ -111,6 +120,26 @@ export function showProducts(products) {
   } else {
     console.log("Please log in first");
   }
+
+  products.forEach((product) => {
+    const like = document.getElementById(`like-${product.id}`);
+    if (wishList.some((item) => item.id === product.id)) {
+      like.style.visibility = "visible";
+      like.style.backgroundColor = "red";
+      like.style.color = "white";
+    }
+
+    document
+      .getElementById(`addToWishList-${product.id}`)
+      .addEventListener("click", function (e) {
+        e.stopPropagation();
+        addToWishList(product);
+        like.style.visibility = "visible";
+        like.style.backgroundColor = "red";
+        like.style.color = "white";
+        console.log(getWishList());
+      });
+  });
 
   function getQuantity(productId) {
     const cart = getCart();

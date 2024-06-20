@@ -1,7 +1,10 @@
 import { signOut } from "../signOut/signOut.js";
 
 import { addToCart, getCart, removeFromCart } from "../js/cart.js";
+
 getCart();
+let cart = getCart();
+console.log("cart:", cart);
 let params = new URLSearchParams(window.location.search);
 let id = Number(params.get("id"));
 console.log(id);
@@ -11,11 +14,12 @@ if (id) {
   const product = JSON.parse(localStorage.getItem("selectedProduct"));
   if (product && product.id === id) {
     const quantity = getQuantity(product.id);
+
     document.getElementById(
       "imageDetails"
     ).innerHTML = ` <img   src="${product.image}" alt="">`;
     document.getElementById("product-detail").innerHTML = `
-      <h2 class="product-title">${product.title}</h2>
+      <h2 class="product-title">${product.name}</h2>
       <p class="product-price">${product.price}$</p>
       <h4 class="product-description">${product.description}</h4>
       <div class="product-action">
@@ -49,11 +53,11 @@ function getQuantity(productId) {
 
 function updateQuantityDisplay(productId) {
   const quantityElement = document.getElementById(`quantity-${productId}`);
-  const cartLength = getCart().length;
-  console.log(cartLength);
+  console.log(quantityElement);
+  const cartLength = cart.length;
 
   if (quantityElement) {
-    quantityElement.textContent = getQuantity(productId);
+    quantityElement.innerHTML = getQuantity(productId);
 
     cartIcon.textContent = cartLength;
   }
