@@ -81,7 +81,37 @@
                             </tr>
                         </thead>
                         <tbody class="product-info-container">
-                            <!-- user Data -->
+                            <!-- order Data -->
+                             <!-- <tr>
+                                <td>5</td>
+                                <td>hossam</td>
+                                <td>hossam@email.com</td>
+                                <td>25 taher.st zayed</td>
+                                <td>12/2/2024</td>
+                                <td>300$</td>
+                                <td>cash</td>
+                                <td><span class="Status pending">pending</span></td>
+                             </tr>
+                             <tr>
+                                <td>5</td>
+                                <td>hossam</td>
+                                <td>hossam@email.com</td>
+                                <td>25 taher.st zayed</td>
+                                <td>12/2/2024</td>
+                                <td>300$</td>
+                                <td>cash</td>
+                                <td><span class="Status canceled">Canceled</span></td>
+                             </tr>
+                             <tr>
+                                <td>5</td>
+                                <td>hossam</td>
+                                <td>hossam@email.com</td>
+                                <td>25 taher.st zayed</td>
+                                <td>12/2/2024</td>
+                                <td>300$</td>
+                                <td>cash</td>
+                                <td><span class="Status complete">Complete</span></td>
+                             </tr> -->
                         </tbody>
                     </table>
         
@@ -124,6 +154,112 @@
                 </div> --> 
             </div>
         </main>
+
+        <div class="order-details">
+            <div class="order-details-container">
+                <div class="header">
+                    <div class="order-date">
+                        <img src="assets/calender.svg" alt="">
+                        <div class="date-id">
+                            <span>Wed, Aug 13,2020,4:34PM</span>
+                            <span>#ID 425125</span>
+                        </div>
+                    </div>
+                    <div class="control-btns">
+                            <select name="status-selection" id="status-selection">
+                                <option value="pending">Pendeing</option>
+                                <option value="complete">Complete</option>
+                                <option value="canceled">Canceled</option>
+                            </select> 
+                        <button>Save</button>
+                        <i class="fa-solid fa-xmark"></i>
+                    </div>
+                </div>
+                <hr>
+                <div class="customer-info-container">
+
+                    <div class="customer-info">
+                        <i class="fa-solid fa-user"></i>
+                        <div class="customer-data">
+                            <!-- js -->
+                        </div>
+                    </div>
+
+                    <div class="customer-info">
+                        <i class="fa-solid fa-envelope"></i>
+                        <div class="customer-data customer-data-email">
+                            <!-- js -->
+                        </div>
+                    </div>
+
+                    <div class="customer-info">
+                        <i class="fa-solid fa-address-card"></i>
+                        <div class="customer-data customer-data-address">
+                            <!-- js -->
+                        </div>
+                    </div>
+                </div>
+                <div class="order-data-table">
+                    <div class="orders-items-data">
+                        <table class="order-items-table-data">
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Product</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><img src="./assets/shoes1.jpg" alt=""></td>
+                                    <td>sgayer kilobatra</td>
+                                    <td>3</td>
+                                    <td>60</td>
+                                    <td>180</td>
+                                </tr>
+                                <tr>
+                                    <td><img src="./assets/shoes2.jpg" alt=""></td>
+                                    <td>fseekh</td>
+                                    <td>2</td>
+                                    <td>70</td>
+                                    <td>140</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="4">Total price</td>
+                                    <td>320</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <div class="order-payment-data">
+                        <div class="payment-method">
+                            <span class="header">Payment info</span>
+                            <div class="info">
+                                <img src="./assets/Mastercard_2019_logo.svg" alt="">
+                                <span>Master card **** **** 4768</span>
+                            </div>
+                            <div class="info">
+                                <span>Buisness name:</span>
+                                <span>Master card,inc.</span>
+                            </div>
+                            <div class="info">
+                                <span>Phone</span>
+                                <span>+20 1120875022</span>
+                            </div>
+
+                        </div>
+                        <div class="note-container">
+                            <span>Note</span>
+                            <textarea name="note" id="note" rows="6"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <script src="/orders/script.js"></script>
     </body>
