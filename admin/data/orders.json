@@ -7,7 +7,8 @@
     "date": "19/2/2024",
     "total_cost": 970,
     "method": "cash",
-    "status": "complete"
+    "status": "pending",
+    "notes":""
     },
     {
     "order_id": 2,
@@ -17,7 +18,8 @@
     "date": "03/15/2024",
     "total_cost": 399.99,
     "method": "credit card",
-    "status": "shipped"
+    "status": "complete",
+    "notes":""
     },
     {
     "order_id": 3,
@@ -27,7 +29,8 @@
     "date": "07/01/2024",
     "total_cost": 150.25,
     "method": "PayPal",
-    "status": "delivered"
+    "status": "pending",
+    "notes":""
     },
     {
     "order_id": 4,
@@ -37,7 +40,8 @@
     "date": "11/29/2024",
     "total_cost": 599.99,
     "method": "credit card",
-    "status": "processing"
+    "status": "complete",
+    "notes":""
     },
     {
     "order_id": 5,
@@ -47,7 +51,8 @@
     "date": "05/10/2024",
     "total_cost": 75.00,
     "method": "cash",
-    "status": "complete"
+    "status": "complete",
+    "notes":""
     },
     {
     "order_id": 6,
@@ -57,7 +62,8 @@
     "date": "09/20/2024",
     "total_cost": 249.99,
     "method": "credit card",
-    "status": "shipped"
+    "status": "canceled",
+    "notes":""
     },
     {
     "order_id": 7,
@@ -67,6 +73,7 @@
     "date": "02/14/2024",
     "total_cost": 450.00,
     "method": "PayPal",
-    "status": "delivered"
+    "status": "canceled",
+    "notes":""
     }
 ]
