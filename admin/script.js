@@ -1,5 +1,10 @@
 // علي بركه الله
 ///////////////////////////////////////////////////////////////////////////////////////////////
+
+let activeUser = JSON.parse(localStorage.getItem("activeUser"));
+if (!activeUser || activeUser.role == "user" || activeUser.role == null) {
+  window.location.href = "../error.html";
+}
 // variable
 let cardsContainer = document.querySelector(".product-cards");
 let editProductId = document.querySelector(".product-id-edit");

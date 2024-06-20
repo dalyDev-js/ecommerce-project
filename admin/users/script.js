@@ -5,7 +5,10 @@ function getUsers() {
 function saveUsers(users) {
   localStorage.setItem("users", JSON.stringify(users));
 }
-
+let activeUser = JSON.parse(localStorage.getItem("activeUser"));
+if (!activeUser || activeUser.role == "user" || activeUser.role == null) {
+  window.location.href = "../error.html";
+}
 // ////////////////////////////////////////////////////////////////////////////////////////
 // delete user from localStorage
 
@@ -318,7 +321,7 @@ function userstoDisplay(user) {
   return `<tr>
     <td>${user.id}</td>
     <td><img src="${user.image}" alt=""></td>
-    <td>${user.name}</td>
+    <td>${user.firstName}</td>
     <td>${user.email}</td>
     <td>${user.createAt}</td>
     <td>${user.role}</td>
