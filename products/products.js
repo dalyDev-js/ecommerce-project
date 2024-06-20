@@ -44,7 +44,7 @@ async function initialize() {
 export function showProducts(products) {
   let cards = "";
   const cartIcon = document.getElementById("cartIcon");
-  const wishList = getWishList(); // Retrieve wishlist from localStorage
+  const wishList = getWishList();
 
   const userName = JSON.parse(localStorage.getItem("activeUser"));
 

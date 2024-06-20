@@ -88,6 +88,7 @@ function fetchData() {
         localStorage.setItem("orders", JSON.stringify(data));
       }
       let orders = JSON.parse(localStorage.getItem("orders") || []);
+      console.log(orders);
       displayOrders(orders);
     })
     .catch((error) => console.error("Error fetching user data:", error));
