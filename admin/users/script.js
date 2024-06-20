@@ -321,9 +321,9 @@ function userstoDisplay(user) {
   return `<tr>
     <td>${user.id}</td>
     <td><img src="${user.image}" alt=""></td>
-    <td>${user.firstName}</td>
+    <td>${user.name}</td>
     <td>${user.email}</td>
-    <td>${user.createAt}</td>
+    <td>${user.createdAt}</td>
     <td>${user.role}</td>
     <td> 
         <img src="assets/edit.svg" alt="" class="update-user-btn" onclick= "updateUser(${user.id})" >
@@ -340,18 +340,9 @@ function displayUsersData(user) {
 
 // ////////////////////////////////////////////////////////////////////////////////////////
 function fetchData() {
-  fetch("./data/users.json")
-    .then((res) => res.json())
-    .then((data) => {
-      if (!localStorage.getItem("users")) {
-        console.log("Json have item");
-        localStorage.setItem("users", JSON.stringify(data));
-      }
-      let users = JSON.parse(localStorage.getItem("users") || []);
-      users = getUsers().slice(startIndex - 1, endIndex);
-      displayUsersData(users);
-    })
-    .catch((error) => console.error("Error fetching user data:", error));
+  let users = JSON.parse(localStorage.getItem("users") || []);
+  users = getUsers().slice(startIndex - 1, endIndex);
+  displayUsersData(users);
 }
 fetchData();
 displayIndexBtn();

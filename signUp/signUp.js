@@ -129,13 +129,18 @@ document.getElementById("signupForm").addEventListener("submit", function (e) {
     valid.password &&
     valid.confirmPassword === true
   ) {
+    let date = new Date().toLocaleDateString();
+    let randomId = Math.round(Math.random() * 100);
     let user = {
+      id: randomId,
+      name: `${fName.value} ${lName.value}`,
       firstName: fName.value,
-      lastName: lName.value,
       email: email.value,
       password: password.value,
       cart: [],
       wishList: [],
+      role: "user",
+      createdAt: date,
     };
     createUsersStorage();
     addUserToStorage(user);
