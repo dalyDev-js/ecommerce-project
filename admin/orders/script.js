@@ -1,5 +1,5 @@
 let ordersInfoContainer = document.querySelector(".product-info-container");
-//
+let orderItemsBody = document.querySelector(".order-items-body");
 let dataAndId = document.querySelector(".date-id");
 let statusSelection = document.querySelector("#status-selection");
 let customerData = document.querySelector(".customer-data");
@@ -35,9 +35,21 @@ closeOrderDetailesPage.addEventListener("click", () => {
 function displayOrderDetails(orderId) {
   let orders = getOrders();
   let order = orders.find((order) => order.userId == orderId);
-  console.log(order.name);
-  dataAndId.innerHTML = `<span>${order.date}</span>
-                            <span>#${order.orderId}</span>`;
+  let totalPrices = order.cart.reduce((sum, item) => sum + item.price, 0);
+  totalPrices = totalPrices.toFixed(2);
+  let aggregatedItems = order.cart.reduce((acc, item) => {
+    if (!acc[item.id]) {
+      acc[item.id] = { ...item, quantity: 1 };
+    } else {
+      acc[item.id].quantity += 1;
+    }
+    return acc;
+  }, {});
+  let aggregatedItemsArray = Object.values(aggregatedItems);
+  console.log(aggregatedItemsArray);
+
+  dataAndId.innerHTML = `<span>${order.createdAt}</span>
+                         <span>#${order.orderId}</span>`;
 
   statusSelection.value = order.status;
 
@@ -47,9 +59,25 @@ function displayOrderDetails(orderId) {
   customerEmail.innerHTML = `<span>Email</span>
                             <span>${order.email}</span>`;
 
-  customerAddress.innerHTML = `<span>Adress</span>
-                            <span>${order.address}</span>`;
+  customerAddress.innerHTML = `<span>Address</span>
+                               <span>${order.address || ""}</span>`;
 
+  orderItemsBody.innerHTML = aggregatedItemsArray
+    .map(
+      (item) => `
+    <tr>
+      <td><img src="${item.image}" alt=""></td>
+      <td>${
+        item.name.length > 15 ? item.name.substring(0, 15) + "..." : item.name
+      }</td>
+      <td>${item.quantity}</td>
+      <td>${item.price}</td>
+      <td>${item.quantity * item.price}</td>
+    </tr>
+  `
+    )
+    .join("");
+  document.getElementById("totalPrice").textContent = totalPrices;
   orderDetailes.classList.add("active");
 }
 
@@ -60,7 +88,7 @@ function displayOrderDetails(orderId) {
 // display user data in the html
 function orderstoDisplay(order) {
   let totalPrices = order.cart.reduce((sum, item) => sum + item.price, 0);
-
+  totalPrices = totalPrices.toFixed(2);
   let statusClass;
   switch (order.status) {
     case "pending":
@@ -78,7 +106,7 @@ function orderstoDisplay(order) {
         <td>${order.orderId}</td>
         <td>${order.name}</td>
         <td>${order.email}</td>
-        <td>${order.address}</td>
+        <td>${order.address || "no adress"}</td>
         <td>${order.createdAt}</td>
         <td>${totalPrices}$</td>
         <td>${order.method}</td>
