@@ -129,15 +129,16 @@ fetchData();
 
 // Save status update
 document.getElementById("save-status-btn").addEventListener("click", () => {
-  let orders = getOrders();
+  let orders = JSON.parse(localStorage.getItem("orders"));
   let order = orders.find((order) => order.userId == currentOrderId);
 
   if (order) {
     order.status = statusSelection.value;
     saveOrders(orders);
     fetchData();
+    localStorage.setItem("orders", JSON.stringify(orders));
     displayOrders(orders);
-    console.log(order);
+    console.log(orders);
     orderDetailes.classList.remove("active");
   }
 });
