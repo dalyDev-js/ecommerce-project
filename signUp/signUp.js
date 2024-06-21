@@ -131,6 +131,7 @@ document.getElementById("signupForm").addEventListener("submit", function (e) {
   ) {
     let date = new Date().toLocaleDateString();
     let randomId = Math.round(Math.random() * 100);
+    let randomOrderId = Math.round(Math.random() * (1000 - 200) + 200);
     let user = {
       id: randomId,
       name: `${fName.value} ${lName.value}`,
@@ -141,6 +142,9 @@ document.getElementById("signupForm").addEventListener("submit", function (e) {
       wishList: [],
       role: "user",
       createdAt: date,
+      orderId: randomOrderId,
+      status: "pending",
+      method: "cash",
     };
     createUsersStorage();
     addUserToStorage(user);
