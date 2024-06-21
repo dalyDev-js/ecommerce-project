@@ -31,7 +31,7 @@ export function addToCart(product) {
         name: product.title || product.name,
         price: product.price || product.current_price,
         image: product.image,
-
+        placedAt: getDate(),
         description: product.description,
       };
       cart.push(product);

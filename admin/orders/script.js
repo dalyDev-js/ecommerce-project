@@ -5,13 +5,16 @@ let statusSelection = document.querySelector("#status-selection");
 let customerData = document.querySelector(".customer-data");
 let customerEmail = document.querySelector(".customer-data-email");
 let customerAddress = document.querySelector(".customer-data-address");
-//
+
 let orderDetailes = document.querySelector(".order-details");
 let closeOrderDetailesPage = document.querySelector(".fa-xmark");
+
+let currentOrderId;
 
 if (!localStorage.getItem("orders")) {
   localStorage.setItem("orders", JSON.stringify([]));
 }
+
 function getOrders() {
   let users = JSON.parse(localStorage.getItem("users") || []);
   let user = users.map((user) => user);
@@ -21,18 +24,18 @@ function getOrders() {
   return orders;
 }
 
-function saveProducts(orders) {
-  localStorage.setItem("products", JSON.stringify(orders));
+function saveOrders(orders) {
+  localStorage.setItem("orders", JSON.stringify(orders));
 }
 
-// close orders-detaile page
+// Close orders-detail page
 closeOrderDetailesPage.addEventListener("click", () => {
   orderDetailes.classList.remove("active");
 });
 
-// orders-detaile
-
+// Orders-detail
 function displayOrderDetails(orderId) {
+  currentOrderId = orderId; // Store the current order ID
   let orders = getOrders();
   let order = orders.find((order) => order.userId == orderId);
   let totalPrices = order.cart.reduce((sum, item) => sum + item.price, 0);
@@ -81,11 +84,7 @@ function displayOrderDetails(orderId) {
   orderDetailes.classList.add("active");
 }
 
-// ////////////////////////////////////////////////////////////////////////////////////////
-
-// console.log(getOrders());
-
-// display user data in the html
+// Display user data in the HTML
 function orderstoDisplay(order) {
   let totalPrices = order.cart.reduce((sum, item) => sum + item.price, 0);
   totalPrices = totalPrices.toFixed(2);
@@ -102,11 +101,11 @@ function orderstoDisplay(order) {
       break;
   }
 
-  return `<tr onclick="displayOrderDetails(${order.order_id})">
+  return `<tr onclick="displayOrderDetails(${order.userId})">
         <td>${order.orderId}</td>
         <td>${order.name}</td>
         <td>${order.email}</td>
-        <td>${order.address || "no adress"}</td>
+        <td>${order.address || "no address"}</td>
         <td>${order.createdAt}</td>
         <td>${totalPrices}$</td>
         <td>${order.method}</td>
@@ -119,11 +118,26 @@ function displayOrders(order) {
   ordersInfoContainer.innerHTML = orderRows;
 }
 
-// ////////////////////////////////////////////////////////////////////////////////////////
 function fetchData() {
   let orders = getOrders();
 
   console.log(orders);
   displayOrders(orders);
 }
+
 fetchData();
+
+// Save status update
+document.getElementById("save-status-btn").addEventListener("click", () => {
+  let orders = getOrders();
+  let order = orders.find((order) => order.userId == currentOrderId);
+
+  if (order) {
+    order.status = statusSelection.value;
+    saveOrders(orders);
+    fetchData();
+    displayOrders(orders);
+    console.log(order);
+    orderDetailes.classList.remove("active");
+  }
+});

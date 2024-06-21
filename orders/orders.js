@@ -5,6 +5,7 @@ console.log(user.cart);
 let cartItems = user.cart;
 console.log(cartItems.length);
 let cards = ``;
+console.log(cartItems);
 for (let i = 0; i < cartItems.length; i++) {
   cards += ` <div class="cart-item" id="cart-item">
                         <div class="cart-body">
@@ -14,7 +15,7 @@ for (let i = 0; i < cartItems.length; i++) {
                                 </div>
                                 <div class="cart-item-details">
                                     <h2>
-                                        ${cartItems[i].title}
+                                        ${cartItems[i].name}
                                     </h2>
                                     <strong>Placed Date:</strong> ${cartItems[i].placedAt}
                                 </div>
