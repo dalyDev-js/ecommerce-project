@@ -16,11 +16,13 @@ setupStorage();
 async function initialize() {
   try {
     data = await getData();
-
     const userName = JSON.parse(localStorage.getItem("activeUser"));
 
-    if (Object.keys(userName).length !== 0) {
+    if (userName && Object.keys(userName).length !== 0) {
       document.getElementById("userName").style.marginRight = "30px";
+      document.getElementById("logOut").addEventListener("click", function () {
+        signOut();
+      });
       document.getElementById("userName").innerHTML = `<a> Hello, ${
         userName.firstName || userName.name
       }
@@ -35,20 +37,16 @@ async function initialize() {
   } catch (error) {
     console.error("Failed to fetch data:", error.message);
   }
-
-  document.getElementById("logOut").addEventListener("click", function () {
-    signOut();
-  });
 }
 
 export function showProducts(products) {
   let cards = "";
   const cartIcon = document.getElementById("cartIcon");
-  const wishList = getWishList();
+  const wishList = getWishList() || [];
 
   const userName = JSON.parse(localStorage.getItem("activeUser"));
 
-  if (Object.keys(userName).length !== 0) {
+  if (userName && Object.keys(userName).length !== 0) {
     cartIcon.textContent = `${getCart().length}`;
   }
 
@@ -56,9 +54,10 @@ export function showProducts(products) {
     const productId = products[i].id;
     let titleStr = products[i].title.substring(0, 20);
 
-    const isLiked = wishList.some((item) => item.id === productId)
-      ? "liked"
-      : "";
+    let isLiked = "";
+    if (userName && Object.keys(userName).length !== 0) {
+      isLiked = wishList.some((item) => item.id === productId) ? "liked" : "";
+    }
 
     cards += ` <div id="item-${productId}" class="item">
           <div class="item-img">
@@ -88,7 +87,7 @@ export function showProducts(products) {
 
   document.getElementById("card-items").innerHTML = cards;
 
-  if (Object.keys(userName).length !== 0) {
+  if (userName && Object.keys(userName).length !== 0) {
     products.forEach((product) => {
       document
         .getElementById(`addToCart-${product.id}`)
@@ -105,7 +104,7 @@ export function showProducts(products) {
       document
         .getElementById(`item-${product.id}`)
         .addEventListener("click", function () {
-          product = {
+          const selectedProduct = {
             id: product.id,
             name: product.title || product.name,
             price: product.price || product.current_price,
@@ -113,33 +112,36 @@ export function showProducts(products) {
             status: "pending",
             description: product.description,
           };
-          localStorage.setItem("selectedProduct", JSON.stringify(product));
+          localStorage.setItem(
+            "selectedProduct",
+            JSON.stringify(selectedProduct)
+          );
           window.location.href = `../productDetails/?id=${product.id}`;
+        });
+    });
+
+    products.forEach((product) => {
+      const like = document.getElementById(`like-${product.id}`);
+      if (wishList.some((item) => item.id === product.id)) {
+        like.style.visibility = "visible";
+        like.style.backgroundColor = "red";
+        like.style.color = "white";
+      }
+
+      document
+        .getElementById(`addToWishList-${product.id}`)
+        .addEventListener("click", function (e) {
+          e.stopPropagation();
+          addToWishList(product);
+          like.style.visibility = "visible";
+          like.style.backgroundColor = "red";
+          like.style.color = "white";
+          console.log(getWishList());
         });
     });
   } else {
     console.log("Please log in first");
   }
-
-  products.forEach((product) => {
-    const like = document.getElementById(`like-${product.id}`);
-    if (wishList.some((item) => item.id === product.id)) {
-      like.style.visibility = "visible";
-      like.style.backgroundColor = "red";
-      like.style.color = "white";
-    }
-
-    document
-      .getElementById(`addToWishList-${product.id}`)
-      .addEventListener("click", function (e) {
-        e.stopPropagation();
-        addToWishList(product);
-        like.style.visibility = "visible";
-        like.style.backgroundColor = "red";
-        like.style.color = "white";
-        console.log(getWishList());
-      });
-  });
 
   function getQuantity(productId) {
     const cart = getCart();
@@ -148,7 +150,7 @@ export function showProducts(products) {
   }
 
   function updateQuantityDisplay(productId) {
-    if (Object.keys(userName).length !== 0) {
+    if (userName && Object.keys(userName).length !== 0) {
       const quantityElement = document.getElementById(`quantity-${productId}`);
       cartIcon.textContent = `${getCart().length}`;
       if (quantityElement) {
