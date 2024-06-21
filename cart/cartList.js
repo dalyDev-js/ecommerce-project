@@ -85,14 +85,17 @@ export function getCartList() {
 }
 
 getCartList();
-
-document.getElementById("toCheckOut").addEventListener("click", function () {
-  window.location.href = "../orders";
-});
+const userName = JSON.parse(localStorage.getItem("activeUser"));
+if (Object.keys(userName).length !== 0) {
+  document.getElementById("toCheckOut").addEventListener("click", function () {
+    window.location.href = "../orders";
+  });
+} else {
+  document.getElementById("toCheckOut").style.display = "none";
+}
 
 console.log("hello");
 
-const userName = JSON.parse(localStorage.getItem("activeUser"));
 console.log(userName.firstName);
 if (Object.keys(userName).length !== 0) {
   document.getElementById("userName").style.marginRight = "30px";
