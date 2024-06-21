@@ -8,6 +8,10 @@ async function fetchAdminUsers() {
 }
 fetchAdminUsers();
 
+let activeUser = JSON.parse(localStorage.getItem("activeUser"));
+if (activeUser.role == "user") {
+  window.location.href = "../error.html";
+}
 if (!localStorage.getItem("activeUser")) {
   localStorage.setItem("activeUser", JSON.stringify({}));
 }
