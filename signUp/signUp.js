@@ -41,7 +41,7 @@ function addUserToStorage(user) {
   localStorage.setItem("activeUser", JSON.stringify(user));
 }
 
-//signup validation
+// signup validation
 
 const fName = document.getElementById("f-name");
 const lName = document.getElementById("l-name");
@@ -84,18 +84,29 @@ lName.addEventListener("input", function () {
 
 // Email
 email.addEventListener("input", function () {
+  let users = JSON.parse(localStorage.getItem("users"));
+  let emailUser = users.map((user) => user.email);
+
   if (emailRegex.test(email.value)) {
-    changeMessage("email-error", valid);
-    valid.email = true;
+    if (isEmailUnique(email.value, emailUser)) {
+      changeMessage("email-error", valid);
+      valid.email = true;
+    } else {
+      changeMessage("email-error", !valid, "Email already exists");
+      valid.email = false;
+    }
   } else {
-    changeMessage("email-error", !valid, "Enter a valid name");
+    changeMessage("email-error", !valid, "Enter a valid email");
     valid.email = false;
   }
 });
 
+function isEmailUnique(email, emailUser) {
+  return !emailUser.includes(email);
+}
+
 // Password
 password.addEventListener("input", function () {
-  console.log(password.value);
   if (passwordRegex.test(password.value)) {
     changeMessage("password-error", valid);
     valid.password = true;
@@ -108,6 +119,7 @@ password.addEventListener("input", function () {
     );
   }
 });
+
 // matching passwords
 confirmPassword.addEventListener("input", function () {
   if (confirmPassword.value == password.value) {
@@ -115,23 +127,25 @@ confirmPassword.addEventListener("input", function () {
     changeMessage("confirm-password-error", valid);
   } else {
     valid.confirmPassword = false;
-    changeMessage("confirm-password-error", !valid, "Password don't match");
+    changeMessage("confirm-password-error", !valid, "Passwords don't match");
   }
 });
 
 // submit
 document.getElementById("signupForm").addEventListener("submit", function (e) {
   e.preventDefault();
+
   if (
     valid.fName &&
     valid.lName &&
     valid.email &&
     valid.password &&
-    valid.confirmPassword === true
+    valid.confirmPassword
   ) {
     let date = new Date().toLocaleDateString();
     let randomId = Math.round(Math.random() * 100);
     let randomOrderId = Math.round(Math.random() * (1000 - 200) + 200);
+
     let user = {
       id: randomId,
       name: `${fName.value} ${lName.value}`,
@@ -146,6 +160,7 @@ document.getElementById("signupForm").addEventListener("submit", function (e) {
       status: "pending",
       method: "cash",
     };
+
     createUsersStorage();
     addUserToStorage(user);
     window.location.href = "../products";
@@ -155,11 +170,12 @@ document.getElementById("signupForm").addEventListener("submit", function (e) {
 });
 
 function changeMessage(id, valid, message) {
+  const element = document.getElementById(id);
   if (valid) {
-    document.getElementById(id).textContent = "✔";
-    document.getElementById(id).className = "success";
-  } else if (!valid) {
-    document.getElementById(id).textContent = message;
-    document.getElementById(id).className = "error";
+    element.textContent = "✔";
+    element.className = "success";
+  } else {
+    element.textContent = message;
+    element.className = "error";
   }
 }
