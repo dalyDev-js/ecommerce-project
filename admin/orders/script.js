@@ -131,14 +131,28 @@ fetchData();
 document.getElementById("save-status-btn").addEventListener("click", () => {
   let orders = JSON.parse(localStorage.getItem("orders"));
   let order = orders.find((order) => order.userId == currentOrderId);
+  let users = JSON.parse(localStorage.getItem("orders"));
 
   if (order) {
     order.status = statusSelection.value;
+    let userIndex = users.findIndex((user) => user.userId == currentOrderId);
+    if (userIndex !== -1) {
+      users[userIndex] = order; // Assuming order structure matches user structure
+    }
     saveOrders(orders);
     fetchData();
     localStorage.setItem("orders", JSON.stringify(orders));
+    localStorage.setItem("users", JSON.stringify(users));
+
     displayOrders(orders);
-    console.log(orders);
+    console.log("orders: ", orders);
+    console.log("activeuser: ", users);
     orderDetailes.classList.remove("active");
   }
+});
+
+document.getElementById("logOut").addEventListener("click", function () {
+  localStorage.setItem("activeUser", JSON.stringify({}));
+  window.location.href = "/";
+  console.log("logged out");
 });

@@ -20,9 +20,7 @@ async function initialize() {
 
     if (userName && Object.keys(userName).length !== 0) {
       document.getElementById("userName").style.marginRight = "30px";
-      document.getElementById("logOut").addEventListener("click", function () {
-        signOut();
-      });
+
       document.getElementById("userName").innerHTML = `<a> Hello, ${
         userName.firstName || userName.name
       }
@@ -32,7 +30,9 @@ async function initialize() {
         </div>
       </a>`;
     }
-
+    document.getElementById("logOut").addEventListener("click", function () {
+      signOut();
+    });
     showProducts(data);
   } catch (error) {
     console.error("Failed to fetch data:", error.message);

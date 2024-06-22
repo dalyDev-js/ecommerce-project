@@ -1,11 +1,11 @@
 import { signOut } from "../signOut/signOut.js";
 
-// Retrieve and parse the active user data from localStorage
 const user = JSON.parse(localStorage.getItem("activeUser"));
 if (!user) {
   console.log("no user");
+  window.location.href = "/signIn";
 } else {
-  console.log(user); // For debugging: log the user object to verify its structure
+  console.log(user);
 }
 
 const cartItems = user.cart;
@@ -13,10 +13,8 @@ console.log(cartItems.length);
 let cards = ``;
 console.log(cartItems);
 
-// Retrieve orders from localStorage
 const orders = JSON.parse(localStorage.getItem("orders") || "[]");
 
-// Function to get order status for a cart item
 function getOrderStatus(cartItemId) {
   const order = orders.find((order) =>
     order.cart.some((item) => item.id === cartItemId)

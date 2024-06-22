@@ -346,3 +346,8 @@ function fetchData() {
 }
 fetchData();
 displayIndexBtn();
+document.getElementById("logOut").addEventListener("click", function () {
+  localStorage.setItem("activeUser", JSON.stringify({}));
+  window.location.href = "/";
+  console.log("logged out");
+});
