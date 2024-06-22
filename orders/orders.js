@@ -26,7 +26,7 @@ for (let i = 0; i < cartItems.length; i++) {
   const status = getOrderStatus(cartItems[i].id);
   let statusButton = "";
 
-  if (status === "pending") {
+  if (status === "pending" || !status) {
     statusButton =
       '<button class="pending"><i class="fa-solid fa-hourglass-end"></i> Pending</button>';
   } else if (status === "canceled") {
