@@ -19,14 +19,16 @@ async function initialize() {
     const userName = JSON.parse(localStorage.getItem("activeUser"));
 
     if (userName && Object.keys(userName).length !== 0) {
-      document.getElementById("userName").style.marginRight = "30px";
-
+      document.getElementById("userName").style.marginRight = "";
+      document.getElementById(
+        "userNameMobile"
+      ).innerHTML = `Hello ${userName.firstName}`;
       document.getElementById("userName").innerHTML = `<a> Hello, ${
         userName.firstName || userName.name
       }
+      
         <div class="dropdown-content-nav" id="dropdown">
-          <a href="../orders/">My Orders</a>
-          <a id="logOut" href="#">Log Out</a>
+          <a id="logOut" href="#" style="backgroundColor: red">Log Out</a>
         </div>
       </a>`;
     }

@@ -33,6 +33,7 @@ export function addToCart(product) {
         image: product.image,
         placedAt: getDate(),
         description: product.description,
+        category: product.category,
       };
       cart.push(product);
       activeUser.cart = cart;

@@ -17,82 +17,223 @@
         rel="stylesheet">
     <script src="https://kit.fontawesome.com/6d60548e6f.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./CSS/assets/swiper.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <script
+      src="https://kit.fontawesome.com/7914afab88.js"
+      crossorigin="anonymous"></script>
+    <style>
+        .underline-hover::before {
+          content: "";
+          position: absolute;
+          width: 0;
+          height: 1px;
+          bottom: 10%;
+          left: 50%;
+          background-color: currentColor;
+          transition: width 0.3s ease, left 0.3s ease;
+        }
+        .underline-hover:hover::before {
+          width: 100%;
+          left: 0;
+        }
+        .z-10 { z-index: 99 !important; }
+      </style>
 </head>
 
 <body>
     <header>
         <!-- for discount -->
+       
         <div class="discount">
             <p>Summer sale Discount Off <span>50%</span>! <a href="#">Shop Now</a></p>
 
         </div>
-        <!-- for navbar -->
+        <!-- navbar starts here-->
         <nav>
-            <div class="navbar">
-                <div class="first-nav">
-                    <img src="CSS/assets/ama-high-resolution-logo-black-transparent.png" alt="image">
+            <div
+              class="flex flex-row justify-between items-center w-full p-3 md:justify-between">
+              <div
+                class="left-menu hidden justify-center flex-row items-center w-2/3 md:flex">
+                <ul class="flex flex-row justify-center items-center">
+                  
+                  <li class="p-3 flex justify-center items-center">
+                    <a
+                      class="p-3 underline-hover relative hover:text-slate-400  transition-transform duration-200"
+                      href="./products/"
+                      >Shop</a
+                    >
+                  </li>
+                  <li class="p-3  flex justify-center items-center">
+                    <a
+                      class="p-3 relative underline-hover hover:text-slate-400  transition-transform duration-200"
+                      href="./products/"
+                      >Men</a
+                    >
+                  </li>
+                  <li class="p-3 flex justify-center items-center">
+                    <a
+                      class="p-3 relative underline-hover hover:text-slate-400  transition-transform duration-200"
+                      href="./products/"
+                      >Women</a
+                    >
+                  </li>
+                  <li class="p-3 flex justify-center items-center">
+                    <a
+                      class="p-3 relative underline-hover hover:text-slate-400  transition-transform duration-200"
+                      href="./products/"
+                      >Kids</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div
+                class="middle-menu flex flex-row justify-center items-center w-2/3">
+                <div class="logo-container w-32 md:w-52">
+                  <a href="#">
+                    <img
+                      class="w-full"
+                      src="../src/ama-high-resolution-logo-black-transparent.png"
+                      alt="ama-logo" />
+                  </a>
                 </div>
-                <div class="second-nav">
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="./products/">Shop</a></li>
-                        <li><a href="./products/">Products</a></li>
-
-                    </ul>
-                    <img src="CSS/assets/ama-high-resolution-logo-black-transparent.png" alt="image">
-                    <ul>
-                        <li><a href="./shoes/">Shoes</a></li>
-                        <li><a href="#">Watches</a></li>
-                        <div class="buy">
-                            <li><a href="products/">buy Now</a></li>
-                        </div>
-
-                    </ul>
-                </div>
-                <div class="third-nav">
-                    <ul>
-                        <li><i class="fa-solid fa-magnifying-glass"></i></li>
-                        <li id="userName"><a href="./signIn/"><i class="fa-regular fa-circle-user"></i></a> </li>
-
+              </div>
+              <div class="right-menu w-2/3 flex justify-center items-center">
+                <ul class="flex justify-center items-center">
+                  <li class="p-0 sm:p-3 hidden sm:flex">
+                    <a class="p-3 hover:text-slate-400" href="#"
+                      ><i class="fa-solid fa-magnifying-glass"></i
+                    ></a>
+                  </li>
+                  <li id="userName" class="p-0 sm:p-3 hidden sm:flex hover:text-slate-400">
+                    <a class="p-3 hover:text-slate-400" href="./signIn/"
+                      ><i class="fa-regular fa-user"></i
+                    ></a>
+                    
+                    <div class="dropdown-content-nav" id="dropdown"> 
+                    <!-- <a id="logOut" href="#">Log Out</a> -->
+                     <a href="./signIn/">Sign In</a>
+                     <a href="./signUp/">Sign up</a>
+                  </div>
+                  </li>
+                  <li class="p-0 sm:p-3">
+                    <a
+                      class="p-3 hover:text-slate-400 relative inline-block"
+                      href="./wishList/">
+                      <i class="fa-regular fa-heart"></i>
+                      <span id="wishlist"
+                        class="absolute top-2 right-0 -mt-1 w-4 h-4 bg-black rounded-full flex items-center justify-center text-white text-xs"
+                        >0</span
+                      >
+                    </a>
+                  </li>
+                  <li class="p-0 sm:p-3">
+                    <a
+                      class="p-3 hover:text-slate-400 relative inline-block"
+                      href="./cart/">
+                      <i class="fa-solid fa-cart-shopping"></i>
+                      <span id="cartIcon"
+                        class="absolute top-2 right-0 -mt-1 w-4 h-4 bg-black rounded-full flex items-center justify-center text-white text-xs"
+                        >0</span
+                      >
+                    </a>
+                  </li>
+                  <li
+                    class="z-10 p-3 hover:scale-125 transition ease-in-out sm:flex md:hidden">
+                    <a id="menu-button" class="p-3 z-10" href="#">
                       
-                        </a>
-                        <li><i class="fa-regular fa-heart"></i></li>
-                        <div class="cart">
-                            <li> <a href="./cart/">
-                                    <i class="fa-solid fa-cart-shopping"></i>
-                                </a></li>
-                            <div class="cart-notification" id="cartIcon">
-                                0
-                            </div>
-                        </div>
-                    </ul>
-                </div>
-
-
+                      <i class="fa-solid fa-bars z-10"></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
-        </nav>
-        <div class="head">
-            <div class="first-head">
-                <div class="text-body">
-                    <h3>Spring - Summer 2024</h3>
-                    <h1>FLASH SALE OF 70%</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, amet, maxime accusamus ipsa rerum
-                        doloribus ad recusandae dolorum min</p>
-                    <button>
-                        Shop Now
-                    </button>
-                </div>
+           
+          </nav>
+          <div id="icon" class="hidden md:hidden" role="dialog" aria-modal="true">
+             
+            <div class="fixed inset-0 "></div>
+            <div class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto  bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+              <div class="flex items-center justify-between">
+                <a href="#" class="-m-1.5 p-1.5">
+                   
+                    <img
+                    class="w-1/4"
+                    src="./src/ama-high-resolution-logo-black-transparent.png"
+                    alt="ama-logo" />
+                </a>
+             
+              </div>
+              <div class="mt-6 flow-root">
+                <div class="-my-6 divide-y divide-gray-500/10">
+                  <div class="space-y-2 py-6">
+                   
+                        <span id="userNameMobile" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" href="./signIn/"
+                          ><i class="fa-regular fa-user"></i
+                        ></span>
+                        
+                      
+                       
+                    <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Shop</a>
+                    <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Women</a>
+                    <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Men</a>
+                    <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Kids</a>
+                  </div>
+         
             </div>
-            <div class="second-head">
-                <img src="./CSS/assets/Top_banner12.jpg" alt="image">
-            </div>
+        
 
-
-        </div>
-
-
+<!-- navbar ends here  -->
 
     </header>
+      <!-- Swiper -->
+      <div class="swiper-container -z-50">
+        <div class="swiper-wrapper">
+          <div
+            class="swiper-slide"
+            style="background-image: url('./CSS/assets/slide-3-home4-1.jpg')" >
+            <a href="../products/">
+            <div class="slide-content">
+              <p>BIG SALE</p>
+              <h2>Up To 50% Off Trendy Fashion</h2>
+              <p><strong>Free Shipping</strong> - Don't Miss The Deal</p>
+              <p style="text-decoration: underline;">SHOP NOW</p>
+            </div>
+          </div>
+        </a>
+          <div
+            class="swiper-slide"
+            style="
+              background-image: url('./CSS/assets/slide-2-home4-1.jpg');
+              background-position: top center;
+              
+            ">
+            <div class="slide-content" id="second">
+              <p>FASHION WOMEN</p>
+              <h2>Sweaters Deals Up to 70% OFF</h2>
+              <p>Delivery And <strong>Free Returns</strong></p>
+              <p style="text-decoration: underline;">SHOP NOW</p>
+            </div>
+          </div>
+          <div
+            class="swiper-slide"
+            style="background-image: url('./CSS/assets/slide-1-home4-1.jpg')">
+            <div class="slide-content">
+              <p>NEW ARRIVALS</p>
+              <h2>Discover The Latest Collection</h2>
+              <p><strong>Free Shipping </strong> On Orders $119+</p>
+              <p style="text-decoration: underline;">SHOP NOW</p>
+            </div>
+          </div>
+        </div>
+        <!-- Add Pagination -->
+        <!-- <div class="swiper-pagination"></div> -->
+      </div>
     <section>
         <div class="category">
             <div class="category-item-1">
@@ -144,205 +285,87 @@
 
 
     </section>
-    <section>
-        <div class="view">
-            <div class="view-cards">
-
-                <div class="view-card">
-                    <img src="./CSS/assets/100_merino_wool_sweater_vest2.png" alt="">
-                    <div class="splash-card-1">
-                        <h2>Summer Sale</h2>
-                        <h1>UP TO 70 %</h1>
-                        <button>SHOP NOW</button>
-                    </div>
-                </div>
-                <div class="view-card">
-                    <img src="./CSS/assets/summer-sale2_1.jpg" alt="">
-                    <div class="splash-card-2">
-                        <h2>New Collection</h2>
-                    </div>
-                </div>
-                <div class="view-card">
-                    <img src="./CSS/assets/lookbook-collection_1.jpg" alt="">
-                    <div class="splash-card-3">
-                        <h2>Outlet Collection</h2>
-                        <p>with big offers </p>
-                        <h4>in our branches</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </section>
+   
 
     <section>
-        <div class="our-products">
-            <div class="top">
-                <h2>Our Products</h2>
-
-                <ul>
-                    <li><a href="#">Clothes</a></li>
-                    <li><a href="#">Shoes</a></li>
-                    <li><a href="#">Watchs</a></li>
-                    <li><a href="#">Bags</a></li>
-
-                </ul>
+      <div class="bg-white">
+        <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+          <h2 class="text-2xl font-bold tracking-tight text-gray-900 text-center">Our Products</h2>
+      
+          <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+            <div class="group relative">
+              <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                <img src="./CSS/assets/100_cashmere_wide_leg_trouser_with_pocket.png" alt="" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+              </div>
+              <div class="mt-4 flex justify-between">
+                <div>
+                  <h3 class="text-sm text-gray-700">
+                    <a href="#">
+                      <span aria-hidden="true" class="absolute inset-0"></span>
+                      Black Pants
+                    </a>
+                  </h3>
+                  <p class="mt-1 text-sm text-gray-500">Black</p>
+                </div>
+                <p class="text-sm font-medium text-gray-900">$499</p>
+              </div>
             </div>
-            <div class="products">
-                <div class="item">
-                    <div class="item-img">
-                        <img src="./CSS/assets/lookbook-collection_1.jpg" alt="">
-                        <!-- <div class="splash">
-                            <div class="like">
-                                <i class="fa-regular fa-heart"></i>
-                            </div>
-                            <div class="addCart">
-                                <button>Add to Cart</button>
-                            </div>
-                        </div> -->
-
-                    </div>
-                    <div class="item-body">
-                        <h2>Black jeans with white blouse</h2>
-                        <p>23.4 $</p>
-                    </div>
+            <div class="group relative">
+              <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                <img src="./CSS/assets/wool_blend_long-sleeve_shirt_2_.png" alt="" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+              </div>
+              <div class="mt-4 flex justify-between">
+                <div>
+                  <h3 class="text-sm text-gray-700">
+                    <a href="#">
+                      <span aria-hidden="true" class="absolute inset-0"></span>
+                      Wool Long Sleeve Shirt
+                    </a>
+                  </h3>
+                  <p class="mt-1 text-sm text-gray-500">off white</p>
                 </div>
-                <div class="item">
-                    <div class="item-img">
-                        <img src="./CSS/assets/100_merino_wool_sweater_vest2.png" alt="">
-                        <!-- <div class="splash">
-                            <div class="like">
-                                <i class="fa-regular fa-heart"></i>
-                            </div>
-                            <div class="addCart">
-                                <button>Add to Cart</button>
-                            </div>
-                        </div> -->
-
-                    </div>
-                    <div class="item-body">
-                        <h2>Heart sleeve with mug</h2>
-                        <p>68 $</p>
-                    </div>
-
-                </div>
-                <div class="item">
-                    <div class="item-img">
-                        <img src="./CSS/assets/puffed-sleeve_cotton_tiered_dress3.png" alt="">
-                        <!-- <div class="splash">
-                            <div class="like">
-                                <i class="fa-regular fa-heart"></i>
-                            </div>
-                            <div class="addCart">
-                                <button>Add to Cart</button>
-                            </div>
-                        </div> -->
-
-                    </div>
-                    <div class="item-body">
-                        <h2>shorter jeep</h2>
-                        <p>102 $</p>
-                    </div>
-
-                </div>
-                <div class="item">
-                    <div class="item-img">
-                        <img src="./CSS/assets/100_cashmere_wide_leg_trouser_with_pocket.png" alt="">
-                        <!-- <div class="splash">
-                            <div class="like">
-                                <i class="fa-regular fa-heart"></i>
-                            </div>
-                            <div class="addCart">
-                                <button>Add to Cart</button>
-                            </div>
-                        </div> -->
-
-                    </div>
-                    <div class="item-body">
-                        <h2>queen red dress</h2>
-                        <p>96 $</p>
-                    </div>
-
-                </div>
-                <div class="item">
-                    <div class="item-img">
-
-                        <img src="./CSS/assets/100_merino_wool_sweater_vest2.png" alt="">
-                        <!-- <div class="splash">
-                            <div class="like">
-                                <i class="fa-regular fa-heart"></i>
-                            </div>
-                            <div class="addCart">
-                                <button>Add to Cart</button>
-                            </div>
-                        </div> -->
-                    </div>
-                    <div class="item-body">
-                        <h2>blouse with undershirt blue</h2>
-                        <p>37 $</p>
-                    </div>
-
-                </div>
-                <div class="item">
-                    <div class="item-img">
-
-                        <img src="./CSS/assets/wool_blend_long-sleeve_shirt_2_.png" alt="">
-                        <!-- <div class="splash">
-                            <div class="like">
-                                <i class="fa-regular fa-heart"></i>
-                            </div>
-                            <div class="addCart">
-                                <button>Add to Cart</button>
-                            </div>
-                        </div> -->
-                    </div>
-                    <div class="item-body">
-                        <h2>sunsea body dress</h2>
-                        <p>59 $</p>
-                    </div>
-
-                </div>
-                <div class="item">
-                    <div class="item-img">
-
-                        <img src="./CSS/assets/footer-wear_2.jpg" alt="">
-                        <!-- <div class="splash">
-                            <div class="like">
-                                <i class="fa-regular fa-heart"></i>
-                            </div>
-                            <div class="addCart">
-                                <button>Add to Cart</button>
-                            </div>
-                        </div> -->
-                    </div>
-                    <div class="item-body">
-                        <h2>Black jeans with white blouse</h2>
-                        <p>25 $</p>
-                    </div>
-
-                </div>
-                <div class="item">
-                    <div class="item-img">
-
-                        <img src="./CSS/assets/puffed-sleeve_cotton_tiered_dress3.png" alt="">
-                        <!-- <div class="splash">
-                            <div class="like">
-                                <i class="fa-regular fa-heart"></i>
-                            </div>
-                            <div class="addCart">
-                                <button>Add to Cart</button>
-                            </div>
-                        </div> -->
-                    </div>
-                    <div class="item-body">
-                        <h2>Black jeans with white blouse</h2>
-                        <p>25 $</p>
-                    </div>
-
-                </div>
-
+                <p class="text-sm font-medium text-gray-900">$350</p>
+              </div>
             </div>
+            <div class="group relative">
+              <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                <img src="./CSS/assets/puffed-sleeve_cotton_tiered_dress3.png" alt="" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+              </div>
+              <div class="mt-4 flex justify-between">
+                <div>
+                  <h3 class="text-sm text-gray-700">
+                    <a href="#">
+                      <span aria-hidden="true" class="absolute inset-0"></span>
+                      Puffed Sleeve Cotton Tiered Dress
+                    </a>
+                  </h3>
+                  <p class="mt-1 text-sm text-gray-500">Black</p>
+                </div>
+                <p class="text-sm font-medium text-gray-900">$559</p>
+              </div>
+            </div>
+            <div class="group relative">
+              <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                <img src="./CSS/assets/100_merino_wool_sweater_vest2.png" alt=" " class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+              </div>
+              <div class="mt-4 flex justify-between">
+                <div>
+                  <h3 class="text-sm text-gray-700">
+                    <a href="#">
+                      <span aria-hidden="true" class="absolute inset-0"></span>
+                      Sweater Vest
+                    </a>
+                  </h3>
+                  <p class="mt-1 text-sm text-gray-500">Black</p>
+                </div>
+                <p class="text-sm font-medium text-gray-900">$455</p>
+              </div>
+            </div>
+          
+             
+          </div>
         </div>
+      </div>
 
     </section>
     <section>
@@ -429,9 +452,40 @@
 
     </footer>
     <script type="module" src="icon.js"></script>
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        var direction = window.innerWidth <= 768 ? "horizontal" : "vertical";
+
+var swiper = new Swiper(".swiper-container", {
+  direction: direction,
+  slidesPerView: 1,
+  autoplay: {
+    delay: 3000,
+    disableOnInteraction: false,
+  },
+  speed: 1500,
+  mousewheel: false,
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+  effect: "fade",
+  fadeEffect: {
+    crossFade: true,
+  },
+});
+
+    </script>
     <script type="module" src="./products/products.js"></script>
     <script type="module" src="main.js"></script>
-
+    <script src="./src/navbar.js"></script>
+   
+      
 </body>
 
 </html>

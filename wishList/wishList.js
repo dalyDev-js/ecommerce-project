@@ -98,8 +98,6 @@ if (Object.keys(userName).length !== 0) {
     "userName"
   ).innerHTML = `<a> Hello, ${userName.firstName}
           <div class="dropdown-content-nav" id="dropdown">
-                                          <a href="../orders/">My Orders</a>
-  
                                           <a href="#">Log Out</a>
                                       </div>
   
